@@ -69,11 +69,12 @@ function prompt(question) {
 function detectIDEs(projectRoot) {
   const found = [];
   const checks = [
-    { name: 'claude-code', paths: ['.claude'] },
-    { name: 'codex',       paths: ['.codex', '.openai'] },
-    { name: 'gemini',      paths: ['.gemini'] },
-    { name: 'opencode',    paths: ['.opencode'] },
-    { name: 'trae',        paths: ['.trae'] },
+    { name: 'claude-code',  paths: ['.claude'] },
+    { name: 'codex',        paths: ['.codex', '.openai'] },
+    { name: 'gemini',       paths: ['.gemini'] },
+    { name: 'opencode',     paths: ['.opencode'] },
+    { name: 'trae',         paths: ['.trae'] },
+    { name: 'antigravity',  paths: ['.antigravity'] },
   ];
   for (const ide of checks) {
     for (const p of ide.paths) {
@@ -186,7 +187,7 @@ async function main() {
   /* ── detectar IDEs ── */
   let ides = detectIDEs(projectRoot);
   if (flags.ides === 'all') {
-    ides = ['claude-code', 'codex', 'gemini', 'opencode', 'trae'];
+    ides = ['claude-code', 'codex', 'gemini', 'opencode', 'trae', 'antigravity'];
   }
   if (ides.length === 0) {
     warn('Nenhuma IDE detectada automaticamente. Instalando só os arquivos do sistema.');
@@ -230,11 +231,12 @@ async function main() {
 
   /* ── 4. instalar skills nas IDEs ── */
   const ideMap = {
-    'claude-code': path.join(projectRoot, '.claude'),
-    'gemini':      path.join(projectRoot, '.gemini'),
-    'opencode':    path.join(projectRoot, '.opencode'),
-    'codex':       path.join(projectRoot, '.codex'),
-    'trae':        path.join(projectRoot, '.trae'),
+    'claude-code':  path.join(projectRoot, '.claude'),
+    'gemini':       path.join(projectRoot, '.gemini'),
+    'opencode':     path.join(projectRoot, '.opencode'),
+    'codex':        path.join(projectRoot, '.codex'),
+    'trae':         path.join(projectRoot, '.trae'),
+    'antigravity':  path.join(projectRoot, '.antigravity'),
   };
 
   for (const ide of ides) {
