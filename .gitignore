@@ -11,6 +11,12 @@ _bmad/
 Thumbs.db
 .DS_Store
 
+# Output gerado pelo sistema VLI (artefatos locais)
+_lp-output/
+
+# Fotos brutas dos imóveis (arquivos pesados, uso local)
+imagens imovel/
+
 # Node
 node_modules/
 
