@@ -10,13 +10,13 @@
 ## Instalação
 
 ```bash
-npx github:MarcelocardosoLeal/vli-lp-imovel install
+npx lp-imovel install
 ```
 
 Ou com flags (sem perguntas interativas):
 
 ```bash
-npx github:MarcelocardosoLeal/vli-lp-imovel install --here --name="Seu Nome" --ides=all
+npx lp-imovel install --here --name="Seu Nome" --ides=all
 ```
 
 O instalador:
