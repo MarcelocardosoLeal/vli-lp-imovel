@@ -16,8 +16,13 @@ O usuário digita `/lp` e o sistema faz o resto.
 
 ### Passo 0 — Detectar sessão existente
 Leia `_lp-output/` procurando `.sessao.json` com `completed: false`.
-- Se encontrar: "Encontrei a LP **[nome]** em andamento (etapa [X] de 13). Quer continuar ou começar uma nova?"
+- Se encontrar: "Encontrei a LP **[nome]** em andamento (etapa [X] de 13). Quer continuar de onde parou ou começar uma nova?"
+  - `continuar` → retoma a partir da etapa salva, recarrega `lp.json` + `briefing.md`
+  - `nova` → confirma descarte e segue pro Passo 1
+  - `ver progresso` → mostra resumo das etapas concluídas antes de decidir
 - Se não encontrar: seguir pro Passo 1
+
+> **Nota para o usuário:** você pode fechar a IDE a qualquer momento e digitar `/lp` de novo — o sistema retoma exatamente onde parou.
 
 ### Passo 1 — Bootstrap do ambiente
 **Agente:** `lp-bootstrap` (silencioso se tudo ok)

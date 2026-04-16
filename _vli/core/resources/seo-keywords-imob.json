@@ -1,0 +1,159 @@
+{
+  "apartamento": [
+    "apartamento à venda",
+    "apartamento novo",
+    "apartamento pronto para morar",
+    "comprar apartamento",
+    "apartamento em lançamento",
+    "apartamento de alto padrão",
+    "apartamento com varanda",
+    "apartamento com sacada gourmet",
+    "apartamento com área de lazer",
+    "apartamento parcelado"
+  ],
+  "studio": [
+    "studio à venda",
+    "studio compacto",
+    "studio novo",
+    "studio para investimento",
+    "studio bem localizado",
+    "studio com lazer",
+    "studio moderno",
+    "kitnet à venda",
+    "comprar studio",
+    "studio para alugar"
+  ],
+  "cobertura": [
+    "cobertura à venda",
+    "cobertura duplex",
+    "cobertura com piscina privativa",
+    "cobertura de luxo",
+    "cobertura alto padrão",
+    "comprar cobertura",
+    "cobertura com terraço",
+    "cobertura linear",
+    "cobertura residencial",
+    "cobertura exclusiva"
+  ],
+  "casa": [
+    "casa à venda",
+    "casa nova",
+    "casa com piscina",
+    "casa em condomínio",
+    "casa com jardim",
+    "comprar casa",
+    "casa de alto padrão",
+    "casa com área gourmet",
+    "casa térrea",
+    "sobrado à venda"
+  ],
+  "sobrado": [
+    "sobrado à venda",
+    "sobrado novo",
+    "sobrado em condomínio",
+    "comprar sobrado",
+    "sobrado com área gourmet",
+    "sobrado de alto padrão",
+    "sobrado 3 quartos",
+    "sobrado com piscina",
+    "sobrado moderno",
+    "sobrado residencial"
+  ],
+  "terreno": [
+    "terreno à venda",
+    "terreno em condomínio",
+    "lote à venda",
+    "comprar terreno",
+    "terreno residencial",
+    "terreno comercial",
+    "terreno plano",
+    "lote em loteamento",
+    "terreno com escritura",
+    "terreno parcelado"
+  ],
+  "loft": [
+    "loft à venda",
+    "loft moderno",
+    "loft industrial",
+    "loft com mezanino",
+    "loft comprar",
+    "loft novo",
+    "loft para investimento",
+    "loft bem localizado",
+    "loft de luxo",
+    "loft urbano"
+  ],
+  "sala_comercial": [
+    "sala comercial à venda",
+    "sala para escritório",
+    "conjunto comercial",
+    "sala corporativa",
+    "comprar sala comercial",
+    "sala comercial nova",
+    "sala em edifício comercial",
+    "escritório à venda",
+    "sala com recepção",
+    "imóvel comercial"
+  ],
+  "condominio_fechado": [
+    "condomínio fechado",
+    "condomínio de alto padrão",
+    "casas em condomínio",
+    "condomínio com segurança 24h",
+    "condomínio com lazer completo",
+    "loteamento fechado",
+    "condomínio residencial",
+    "condomínio clube",
+    "condomínio com piscina",
+    "morar em condomínio"
+  ],
+  "chacara": [
+    "chácara à venda",
+    "sítio à venda",
+    "chácara com piscina",
+    "chácara para lazer",
+    "comprar chácara",
+    "propriedade rural",
+    "chácara com casa",
+    "chácara de fim de semana",
+    "sítio residencial",
+    "chácara em condomínio"
+  ],
+  "_modificadores_bairro": [
+    "à venda em {bairro}",
+    "no {bairro}",
+    "próximo ao {bairro}",
+    "região do {bairro}",
+    "bairro {bairro}"
+  ],
+  "_modificadores_cidade": [
+    "em {cidade}",
+    "{cidade} SP",
+    "{cidade} zona sul",
+    "{cidade} zona norte",
+    "{cidade} centro"
+  ],
+  "_modificadores_caracteristica": [
+    "{N} dormitórios",
+    "{N} suítes",
+    "{N} vagas",
+    "{m2} m²",
+    "a partir de {preco}",
+    "pronto para morar",
+    "em construção",
+    "em lançamento",
+    "plantas a partir de {m2} m²"
+  ],
+  "_long_tail": [
+    "{tipo} {N} quartos à venda em {bairro} {cidade}",
+    "comprar {tipo} em {bairro}",
+    "{tipo} novo {bairro} {cidade}",
+    "{tipo} {m2} m2 {bairro}",
+    "{tipo} alto padrão {cidade}",
+    "{tipo} com lazer completo {bairro}",
+    "{tipo} pronto para morar {cidade}",
+    "melhores {tipo}s para venda em {bairro}",
+    "{tipo} {N} suítes {cidade}",
+    "imóvel novo {bairro} {cidade}"
+  ]
+}

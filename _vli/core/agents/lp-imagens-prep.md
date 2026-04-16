@@ -34,7 +34,7 @@ Python + Pillow. Se faltar, chama `lp-bootstrap` automaticamente.
 
 ## Comando interno (delega pro script)
 ```bash
-python {install-root}/_vli/core/scripts/process-images.py \
+python {install-root}/_vli/core/scripts/optimize-images.py \
   --input <pasta-bruta> \
   --output _lp-output/<slug>/img \
   --slug <slug> \

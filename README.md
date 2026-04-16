@@ -177,6 +177,29 @@ _lp-output/
 
 ---
 
+## Publicar no GitHub Pages (opcional)
+
+Para usar a opção de publicação via GitHub Pages no passo 13, você precisa do `gh` CLI autenticado:
+
+```bash
+# 1. Instalar o gh CLI
+# Windows (winget):
+winget install --id GitHub.cli
+
+# macOS (brew):
+brew install gh
+
+# 2. Autenticar
+gh auth login
+# Escolha: GitHub.com → HTTPS → Login with a web browser
+```
+
+Depois disso o agente `lp-publisher` consegue criar o repositório e publicar automaticamente.
+
+> Sem o `gh` CLI, as opções de ZIP, preview local e Netlify continuam funcionando normalmente.
+
+---
+
 ## Contribuindo
 
 Veja [CONTRIBUTING.md](_vli/CONTRIBUTING.md) para detalhes sobre como adicionar templates, paletas, melhorar agentes ou reportar bugs.
