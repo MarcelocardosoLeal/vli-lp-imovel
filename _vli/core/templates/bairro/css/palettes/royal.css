@@ -1,0 +1,21 @@
+/* Paleta: royal — Roxo real + dourado (luxo, ousadia, empreendimentos assinados). */
+:root {
+  --color-primary: #2d1b69;
+  --color-primary-light: #4527a0;
+  --color-primary-dark: #1a0e42;
+  --color-accent: #e8b931;
+  --color-accent-light: #f0cc5c;
+  --color-accent-dark: #c49b1f;
+  --color-bg: #ffffff;
+  --color-bg-alt: #f7f4fb;
+  --color-bg-dark: #2d1b69;
+  --color-bg-section: #faf8fd;
+  --color-text: #2d2d2d;
+  --color-text-light: #6c6b7a;
+  --color-text-inverse: #ffffff;
+  --color-border: #e4ddf0;
+  --gradient-hero: linear-gradient(180deg, rgba(45, 27, 105, 0.55) 0%, rgba(45, 27, 105, 0.92) 100%);
+  --gradient-accent: linear-gradient(135deg, #e8b931 0%, #f0cc5c 100%);
+  --gradient-dark: linear-gradient(135deg, #2d1b69 0%, #4527a0 100%);
+  --shadow-cta: 0 4px 20px rgba(232, 185, 49, 0.35);
+}

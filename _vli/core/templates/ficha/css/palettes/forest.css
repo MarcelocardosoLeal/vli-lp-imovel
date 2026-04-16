@@ -1,0 +1,21 @@
+/* Paleta: forest — Verde sofisticado (sustentável, natureza, casa de campo/condomínio). */
+:root {
+  --color-primary: #1b4332;
+  --color-primary-light: #2d6a4f;
+  --color-primary-dark: #0f2b1e;
+  --color-accent: #52b788;
+  --color-accent-light: #74c69d;
+  --color-accent-dark: #40916c;
+  --color-bg: #ffffff;
+  --color-bg-alt: #f4f8f5;
+  --color-bg-dark: #1b4332;
+  --color-bg-section: #f8faf8;
+  --color-text: #1d2d25;
+  --color-text-light: #6b7a70;
+  --color-text-inverse: #ffffff;
+  --color-border: #d9e5dd;
+  --gradient-hero: linear-gradient(180deg, rgba(27, 67, 50, 0.55) 0%, rgba(27, 67, 50, 0.92) 100%);
+  --gradient-accent: linear-gradient(135deg, #52b788 0%, #74c69d 100%);
+  --gradient-dark: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%);
+  --shadow-cta: 0 4px 20px rgba(82, 183, 136, 0.35);
+}

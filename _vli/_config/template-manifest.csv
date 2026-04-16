@@ -1,0 +1,5 @@
+id,name,displayName,description,defaultPalette,sections,thumbnail,path
+"vitrine","Vitrine","Vitrine Premium","Moderno, fotos grandes, ideal para alto padrao","ocean-gold","resumo,galeria,diferenciais,plantas,ficha,localizacao,bairro,faq,comercial","core/templates/vitrine/preview.jpg","core/templates/vitrine/"
+"ficha","Ficha","Ficha Tecnica","Tecnico, escuro, foco em dados completos do imovel","midnight","resumo,galeria,diferenciais,plantas,ficha,faq,comercial","core/templates/ficha/preview.jpg","core/templates/ficha/"
+"bairro","Bairro","Lifestyle do Bairro","Verde, lifestyle, valoriza a regiao e estilo de vida","forest","resumo,galeria,diferenciais,bairro,localizacao,faq,comercial","core/templates/bairro/preview.jpg","core/templates/bairro/"
+"light","Light","Editorial Luxo","Editorial claro, luxo minimalista, tom boutique","pearl","resumo,galeria,plantas,diferenciais,ficha,bairro,localizacao,faq,comercial","core/templates/light/preview.jpg","core/templates/light/"

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Apartamento à venda | Residências Lumière</title>
+  <meta name="description" content="Apartamento de luxo 3 suítes, 185m², Itaim Bibi, São Paulo. Residências Lumière.">
+  <meta property="og:title" content="Residências Lumière — Apartamento no Itaim Bibi">
+  <meta property="og:description" content="3 suítes, 185m², acabamento único, Itaim Bibi.">
+  <meta property="og:image" content="https://placehold.co/1200x630/1a1814/b3935d?text=Residências+Lumière">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Residências Lumière — Apartamento no Itaim Bibi">
+  <meta name="twitter:description" content="3 suítes, 185m², acabamento único, Itaim Bibi.">
+  <meta name="twitter:image" content="https://placehold.co/1200x630/1a1814/b3935d?text=Residências+Lumière">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,400;0,6..72,700;1,6..72,400&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary":                  "var(--color-primary, #b3935d)",
+            "primary-dark":             "var(--color-primary-dark, #8a6e42)",
+            "on-primary":               "var(--color-cta-text, #ffffff)",
+            "on-primary-container":     "var(--color-primary-dark, #8a6e42)",
+            "background":               "var(--color-bg, #fcf9f8)",
+            "surface":                  "var(--color-bg, #fcf9f8)",
+            "surface-container-low":    "var(--color-bg-alt, #f6f3f2)",
+            "surface-container":        "var(--color-bg-section, #f0eded)",
+            "surface-container-high":   "var(--color-border, #eae7e7)",
+            "on-background":            "var(--color-text, #1b1c1c)",
+            "on-surface":               "var(--color-text, #1b1c1c)",
+            "on-surface-variant":       "var(--color-text-light, #4d463a)",
+            "outline-variant":          "var(--color-border, #d1c5b6)",
+            "secondary-container":      "var(--color-bg-alt, #e2dfde)",
+          },
+          borderRadius: {
+            "DEFAULT": "0px",
+            "lg":      "0px",
+            "xl":      "0px",
+            "full":    "9999px"
+          },
+          fontFamily: {
+            "headline": ["Newsreader", "serif"],
+            "body":     ["Inter", "sans-serif"],
+            "label":    ["Inter", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="css/variables.css">
+  <script src="js/config-loader.js"></script>
+
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+    .glass-nav { background-color: rgba(252,249,248,0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    details[open] > summary .faq-plus { display: none; }
+    details:not([open]) > summary .faq-minus { display: none; }
+    details > summary { list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }
+    .mobile-menu-toggle span { transition: transform 0.3s ease, opacity 0.3s ease; }
+    .mobile-menu-toggle.is-open span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+    .mobile-menu-toggle.is-open span:nth-child(2) { opacity: 0; }
+    .mobile-menu-toggle.is-open span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+    .mobile-menu-panel {
+      position: absolute;
+      top: calc(100% + 0.75rem);
+      left: 1rem;
+      right: 1rem;
+      padding: 1rem;
+      border: 1px solid rgba(209,197,182,0.6);
+      background: rgba(252,249,248,0.98);
+      box-shadow: 0 24px 60px rgba(31,27,23,0.12);
+      opacity: 0;
+      transform: translateY(-12px);
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .mobile-menu-panel.is-open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+  </style>
+
+  <script id="schema-organization" type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Lumière Imóveis","telephone":"+5511988776655"}</script>
+  <script id="schema-faq" type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quantas suítes tem o apartamento?","acceptedAnswer":{"@type":"Answer","text":"O apartamento possui 3 suítes, com a master tendo closet e banheiro com banheira."}},{"@type":"Question","name":"Qual a metragem privativa?","acceptedAnswer":{"@type":"Answer","text":"185m² de área privativa em planta aberta e otimizada."}},{"@type":"Question","name":"O imóvel está pronto?","acceptedAnswer":{"@type":"Answer","text":"Sim. Pronto para morar com entrega imediata."}},{"@type":"Question","name":"Quantas vagas de garagem?","acceptedAnswer":{"@type":"Answer","text":"3 vagas cobertas e privativas com elevador."}}]}</script>
+  <script id="schema-product" type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Residências Lumière — Apartamento no Itaim Bibi","description":"Apartamento de luxo 3 suítes, 185m², Itaim Bibi, São Paulo.","image":"https://placehold.co/1200x630/1a1814/b3935d?text=Residências+Lumière","brand":{"@type":"Organization","name":"Lumière Imóveis"},"offers":{"@type":"Offer","priceCurrency":"BRL","price":"3980000","availability":"https://schema.org/InStock"}}</script>
+</head>
+<body class="bg-background text-on-background font-body antialiased">
+
+  <!-- ===== HEADER ===== -->
+  <header class="fixed top-0 w-full z-50 glass-nav border-b border-outline-variant/20" role="banner">
+    <div class="flex justify-between items-center px-8 py-5 max-w-[1920px] mx-auto">
+      <a href="#" class="text-xl font-headline italic tracking-tight text-on-surface" data-bind="empresa">
+        LUMIÈRE RESIDENCES
+      </a>
+      <nav class="hidden md:flex gap-10" role="navigation">
+        <a class="font-label tracking-[0.2em] uppercase text-[10px] font-medium text-primary border-b border-primary pb-1" href="#galeria">Galeria</a>
+        <a class="font-label tracking-[0.2em] uppercase text-[10px] font-medium text-stone-500 hover:text-primary transition-colors duration-300" href="#plantas">Plantas</a>
+        <a class="font-label tracking-[0.2em] uppercase text-[10px] font-medium text-stone-500 hover:text-primary transition-colors duration-300" href="#diferenciais">Diferenciais</a>
+        <a class="font-label tracking-[0.2em] uppercase text-[10px] font-medium text-stone-500 hover:text-primary transition-colors duration-300" href="#localizacao">Localização</a>
+        <a class="font-label tracking-[0.2em] uppercase text-[10px] font-medium text-stone-500 hover:text-primary transition-colors duration-300" href="#contato">Contato</a>
+      </nav>
+      <a href="#contato" class="hidden md:inline-block bg-primary text-on-primary px-6 py-3 font-label uppercase text-[10px] tracking-[0.2em] hover:bg-on-primary-container transition-colors">
+        Solicitar Apresentação
+      </a>
+      <button type="button" class="mobile-menu-toggle md:hidden ml-4 flex h-11 w-11 items-center justify-center flex-col gap-1.5 border border-outline-variant/60 text-on-surface" aria-label="Abrir menu" aria-controls="mobile-menu-panel" aria-expanded="false">
+        <span class="block w-[18px] h-px bg-current"></span>
+        <span class="block w-[18px] h-px bg-current"></span>
+        <span class="block w-[18px] h-px bg-current"></span>
+      </button>
+    </div>
+    <div id="mobile-menu-panel" class="mobile-menu-panel md:hidden">
+      <div class="flex flex-col gap-2">
+        <a class="font-label tracking-[0.2em] uppercase text-[10px] font-medium text-primary px-3 py-3 border border-outline-variant/30" href="#galeria">Galeria</a>
+        <a class="font-label tracking-[0.2em] uppercase text-[10px] font-medium text-on-surface px-3 py-3 border border-outline-variant/30" href="#plantas">Plantas</a>
+        <a class="font-label tracking-[0.2em] uppercase text-[10px] font-medium text-on-surface px-3 py-3 border border-outline-variant/30" href="#diferenciais">Diferenciais</a>
+        <a class="font-label tracking-[0.2em] uppercase text-[10px] font-medium text-on-surface px-3 py-3 border border-outline-variant/30" href="#localizacao">Localização</a>
+        <a class="font-label tracking-[0.2em] uppercase text-[10px] font-medium text-on-surface px-3 py-3 border border-outline-variant/30" href="#contato">Contato</a>
+        <a href="#contato" class="bg-primary text-on-primary px-6 py-4 text-center font-label uppercase text-[10px] tracking-[0.2em] mt-2">
+          Solicitar Apresentação
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== 1. HERO ===== -->
+    <section class="relative h-screen w-full flex items-center justify-center overflow-hidden" id="hero" aria-label="Apresentação do imóvel">
+      <img class="absolute inset-0 w-full h-full object-cover" src="https://placehold.co/1600x900/1a1814/b3935d?text=FACHADA+%2F+HERO" alt="Fachada do empreendimento" loading="eager" fetchpriority="high"/>
+      <div class="absolute inset-0 bg-black/45"></div>
+      <div class="relative z-10 text-center text-on-primary max-w-5xl px-6">
+        <span class="font-label tracking-[0.5em] uppercase text-[10px] text-primary/90 mb-6 block" data-bind="status">Pronto para morar</span>
+        <h1 class="font-headline text-6xl md:text-8xl mb-4 tracking-tight leading-[1.05]" data-bind="nome">Residências Lumière</h1>
+        <p class="font-headline italic text-xl md:text-2xl mb-4 opacity-80 font-light" data-bind="tipo">Apartamento de alto padrão</p>
+        <p class="font-label tracking-[0.25em] uppercase text-[10px] opacity-60 mb-14" data-bind="localizacao">Itaim Bibi, São Paulo — SP</p>
+        <div class="flex justify-center gap-16 mb-14 border-t border-b border-white/15 py-8">
+          <div class="text-center">
+            <span class="font-headline text-3xl block" data-stat="dorms">3</span>
+            <span class="font-label text-[9px] tracking-[0.3em] uppercase opacity-50 mt-1 block">dormitórios</span>
+          </div>
+          <div class="w-px bg-white/15"></div>
+          <div class="text-center">
+            <span class="font-headline text-3xl block" data-stat="suites">3</span>
+            <span class="font-label text-[9px] tracking-[0.3em] uppercase opacity-50 mt-1 block">suítes</span>
+          </div>
+          <div class="w-px bg-white/15"></div>
+          <div class="text-center">
+            <span class="font-headline text-3xl block" data-stat="m2max">185</span>
+            <span class="font-label text-[9px] tracking-[0.3em] uppercase opacity-50 mt-1 block">m² privativos</span>
+          </div>
+          <div class="w-px bg-white/15"></div>
+          <div class="text-center">
+            <span class="font-headline text-3xl block" data-stat="vagas">3</span>
+            <span class="font-label text-[9px] tracking-[0.3em] uppercase opacity-50 mt-1 block">vagas</span>
+          </div>
+        </div>
+        <a class="inline-block bg-primary text-on-primary px-12 py-5 font-label uppercase text-[10px] tracking-[0.4em] hover:bg-on-primary-container transition-colors duration-500" href="#galeria">
+          Conheça a Coleção
+        </a>
+      </div>
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+        <span class="font-label text-[8px] tracking-[0.4em] uppercase text-white">Explorar</span>
+        <div class="w-px h-10 bg-white animate-pulse"></div>
+      </div>
+    </section>
+
+    <!-- ===== 2. RESUMO TÉCNICO ===== -->
+    <section class="bg-surface-container-low py-20 px-8" id="resumo" aria-label="Resumo técnico">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-2 md:grid-cols-6 gap-0 border border-outline-variant/30">
+          <div class="text-center py-10 px-6 border-r border-outline-variant/30">
+            <span class="font-headline text-4xl italic text-on-surface block mb-2" data-stat="dorms">3</span>
+            <span class="font-label text-[9px] tracking-[0.35em] uppercase text-stone-400">Dormitórios</span>
+          </div>
+          <div class="text-center py-10 px-6 border-r border-outline-variant/30">
+            <span class="font-headline text-4xl italic text-on-surface block mb-2" data-stat="suites">3</span>
+            <span class="font-label text-[9px] tracking-[0.35em] uppercase text-stone-400">Suítes</span>
+          </div>
+          <div class="text-center py-10 px-6 border-r border-outline-variant/30">
+            <span class="font-headline text-4xl italic text-on-surface block mb-2" data-stat="banh">4</span>
+            <span class="font-label text-[9px] tracking-[0.35em] uppercase text-stone-400">Banheiros</span>
+          </div>
+          <div class="text-center py-10 px-6 border-r border-outline-variant/30">
+            <span class="font-headline text-4xl italic text-on-surface block mb-2" data-stat="vagas">3</span>
+            <span class="font-label text-[9px] tracking-[0.35em] uppercase text-stone-400">Vagas</span>
+          </div>
+          <div class="text-center py-10 px-6 border-r border-outline-variant/30">
+            <span class="font-headline text-4xl italic text-primary block mb-2" data-stat="m2max">185</span>
+            <span class="font-label text-[9px] tracking-[0.35em] uppercase text-stone-400">m² privativos</span>
+          </div>
+          <div class="text-center py-10 px-6 flex flex-col items-center justify-center">
+            <a href="#contato" class="bg-primary text-on-primary px-6 py-3 font-label uppercase text-[10px] tracking-[0.2em] hover:bg-on-primary-container transition-colors whitespace-nowrap">
+              Agendar visita
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 3. GALERIA (CAROUSEL) ===== -->
+    <section class="py-32 bg-white overflow-hidden" id="galeria" aria-label="Galeria de imagens">
+      <div class="max-w-7xl mx-auto px-8 mb-20 text-center">
+        <span class="text-primary font-label uppercase tracking-[0.4em] text-[10px] mb-4 block" data-bind="construtora">A Coleção Monograph</span>
+        <h2 class="font-headline text-4xl md:text-6xl text-on-background italic">Perspectivas Exclusivas</h2>
+      </div>
+      <div class="relative max-w-[1600px] mx-auto group">
+        <div class="overflow-hidden px-4 md:px-0" id="carousel-viewport">
+          <div class="flex transition-transform duration-1000" style="transition-timing-function:cubic-bezier(0.23,1,0.32,1)" id="carousel-track">
+            <div class="flex-none w-[85%] md:w-1/3 px-2 md:px-4">
+              <div class="relative aspect-[4/5] overflow-hidden group/item">
+                <img class="w-full h-full object-cover transition-transform duration-700 group-hover/item:scale-110" src="https://placehold.co/600x750/1a1814/b3935d?text=FACHADA" alt="Fachada do empreendimento" loading="lazy"/>
+                <div class="absolute inset-0 bg-black/20 group-hover/item:bg-black/0 transition-colors duration-500"></div>
+                <div class="absolute bottom-8 left-8 text-white opacity-0 group-hover/item:opacity-100 transition-opacity duration-500">
+                  <p class="font-headline text-xl italic">A Arquitetura</p>
+                </div>
+              </div>
+            </div>
+            <div class="flex-none w-[85%] md:w-1/3 px-2 md:px-4">
+              <div class="relative aspect-[4/5] overflow-hidden group/item">
+                <img class="w-full h-full object-cover transition-transform duration-700 group-hover/item:scale-110" src="https://placehold.co/600x750/2a2520/c5a55a?text=SALA+DE+ESTAR" alt="Sala de estar integrada" loading="lazy"/>
+                <div class="absolute inset-0 bg-black/20 group-hover/item:bg-black/0 transition-colors duration-500"></div>
+                <div class="absolute bottom-8 left-8 text-white opacity-0 group-hover/item:opacity-100 transition-opacity duration-500">
+                  <p class="font-headline text-xl italic">Social Living</p>
+                </div>
+              </div>
+            </div>
+            <div class="flex-none w-[85%] md:w-1/3 px-2 md:px-4">
+              <div class="relative aspect-[4/5] overflow-hidden group/item">
+                <img class="w-full h-full object-cover transition-transform duration-700 group-hover/item:scale-110" src="https://placehold.co/600x750/1a1814/d4b96e?text=SUITE+MASTER" alt="Suíte master com banheira" loading="lazy"/>
+                <div class="absolute inset-0 bg-black/20 group-hover/item:bg-black/0 transition-colors duration-500"></div>
+                <div class="absolute bottom-8 left-8 text-white opacity-0 group-hover/item:opacity-100 transition-opacity duration-500">
+                  <p class="font-headline text-xl italic">Refúgio Master</p>
+                </div>
+              </div>
+            </div>
+            <div class="flex-none w-[85%] md:w-1/3 px-2 md:px-4">
+              <div class="relative aspect-[4/5] overflow-hidden group/item">
+                <img class="w-full h-full object-cover transition-transform duration-700 group-hover/item:scale-110" src="https://placehold.co/600x750/2a2520/b3935d?text=LOBBY" alt="Lobby monumental" loading="lazy"/>
+                <div class="absolute inset-0 bg-black/20 group-hover/item:bg-black/0 transition-colors duration-500"></div>
+                <div class="absolute bottom-8 left-8 text-white opacity-0 group-hover/item:opacity-100 transition-opacity duration-500">
+                  <p class="font-headline text-xl italic">Grand Lobby</p>
+                </div>
+              </div>
+            </div>
+            <div class="flex-none w-[85%] md:w-1/3 px-2 md:px-4">
+              <div class="relative aspect-[4/5] overflow-hidden group/item">
+                <img class="w-full h-full object-cover transition-transform duration-700 group-hover/item:scale-110" src="https://placehold.co/600x750/1a1814/e5c187?text=COZINHA" alt="Cozinha gourmet" loading="lazy"/>
+                <div class="absolute inset-0 bg-black/20 group-hover/item:bg-black/0 transition-colors duration-500"></div>
+                <div class="absolute bottom-8 left-8 text-white opacity-0 group-hover/item:opacity-100 transition-opacity duration-500">
+                  <p class="font-headline text-xl italic">Gourmet Kitchen</p>
+                </div>
+              </div>
+            </div>
+            <div class="flex-none w-[85%] md:w-1/3 px-2 md:px-4">
+              <div class="relative aspect-[4/5] overflow-hidden group/item">
+                <img class="w-full h-full object-cover transition-transform duration-700 group-hover/item:scale-110" src="https://placehold.co/600x750/2a2520/c5a55a?text=VARANDA" alt="Varanda gourmet" loading="lazy"/>
+                <div class="absolute inset-0 bg-black/20 group-hover/item:bg-black/0 transition-colors duration-500"></div>
+                <div class="absolute bottom-8 left-8 text-white opacity-0 group-hover/item:opacity-100 transition-opacity duration-500">
+                  <p class="font-headline text-xl italic">Varanda Gourmet</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="absolute -left-6 top-1/2 -translate-y-1/2 w-16 h-16 bg-white shadow-xl text-primary flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-primary hover:text-white z-20 hidden md:flex" id="prevSlide" aria-label="Foto anterior">
+          <span class="material-symbols-outlined !text-3xl">chevron_left</span>
+        </button>
+        <button class="absolute -right-6 top-1/2 -translate-y-1/2 w-16 h-16 bg-white shadow-xl text-primary flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-primary hover:text-white z-20 hidden md:flex" id="nextSlide" aria-label="Próxima foto">
+          <span class="material-symbols-outlined !text-3xl">chevron_right</span>
+        </button>
+      </div>
+      <div class="flex justify-center items-center gap-6 mt-16" id="carousel-dots">
+        <button class="w-12 h-[2px] bg-primary transition-all duration-300" data-index="0" aria-label="Slide 1"></button>
+        <button class="w-8 h-[1px] bg-stone-200 hover:bg-stone-400 transition-all duration-300" data-index="1" aria-label="Slide 2"></button>
+        <button class="w-8 h-[1px] bg-stone-200 hover:bg-stone-400 transition-all duration-300" data-index="2" aria-label="Slide 3"></button>
+      </div>
+    </section>
+
+    <!-- ===== 4. PLANTAS ===== -->
+    <section class="bg-surface-container-low py-32" id="plantas" aria-label="Plantas do imóvel">
+      <div class="max-w-7xl mx-auto px-8">
+        <div class="text-center mb-20">
+          <span class="text-primary font-label uppercase tracking-[0.4em] text-[10px] mb-4 block">Tipologias</span>
+          <h2 class="font-headline text-5xl mb-12 italic">Plantas Humanizadas</h2>
+          <div class="flex justify-center gap-12 border-b border-outline-variant/20 max-w-xl mx-auto" id="plant-tabs">
+            <button class="pb-6 px-4 font-label uppercase text-[10px] tracking-[0.3em] text-primary border-b-2 border-primary plant-tab-btn" data-plant="0">3 Suítes</button>
+            <button class="pb-6 px-4 font-label uppercase text-[10px] tracking-[0.3em] text-stone-400 hover:text-primary transition-colors plant-tab-btn" data-plant="1">4 Suítes</button>
+            <button class="pb-6 px-4 font-label uppercase text-[10px] tracking-[0.3em] text-stone-400 hover:text-primary transition-colors plant-tab-btn" data-plant="2">Penthouse</button>
+          </div>
+        </div>
+        <!-- Plant 0 -->
+        <div class="plant-panel grid grid-cols-1 lg:grid-cols-2 gap-24 items-center" data-plant-panel="0">
+          <div class="bg-white p-12 shadow-sm border border-outline-variant/10">
+            <img class="w-full h-auto opacity-90" src="https://placehold.co/700x500/f6f3f2/b3935d?text=PLANTA+3+SUITES+185+M2" alt="Planta 3 suítes 185m²" loading="lazy"/>
+          </div>
+          <div class="space-y-10">
+            <h3 class="font-headline text-4xl italic leading-tight">Configuração 3 Suítes</h3>
+            <p class="text-stone-500 text-lg leading-relaxed font-light">Layout equilibrado que prioriza a ventilação cruzada e o aproveitamento total da luz natural.</p>
+            <ul class="space-y-6 font-label text-[10px] uppercase tracking-[0.3em] text-on-surface">
+              <li class="flex items-center gap-6"><span class="w-1.5 h-1.5 bg-primary inline-block"></span> <span data-stat="m2max">185</span>m² de Área Privativa</li>
+              <li class="flex items-center gap-6"><span class="w-1.5 h-1.5 bg-primary inline-block"></span> Elevador Privativo Biométrico</li>
+              <li class="flex items-center gap-6"><span class="w-1.5 h-1.5 bg-primary inline-block"></span> <span data-stat="vagas">3</span> Vagas Determinadas</li>
+            </ul>
+            <a href="#contato" class="inline-block bg-primary text-on-primary px-8 py-4 font-label uppercase text-[10px] tracking-[0.3em] hover:bg-on-primary-container transition-colors">
+              Solicitar Memorial
+            </a>
+          </div>
+        </div>
+        <!-- Plant 1 -->
+        <div class="plant-panel hidden grid-cols-1 lg:grid-cols-2 gap-24 items-center" data-plant-panel="1">
+          <div class="bg-white p-12 shadow-sm border border-outline-variant/10">
+            <img class="w-full h-auto opacity-90" src="https://placehold.co/700x500/f6f3f2/b3935d?text=PLANTA+4+SUITES+240+M2" alt="Planta 4 suítes 240m²" loading="lazy"/>
+          </div>
+          <div class="space-y-10">
+            <h3 class="font-headline text-4xl italic leading-tight">Configuração 4 Suítes</h3>
+            <p class="text-stone-500 text-lg leading-relaxed font-light">Amplitude máxima para quem valoriza cada cômodo com espaço generoso e privacidade total.</p>
+            <ul class="space-y-6 font-label text-[10px] uppercase tracking-[0.3em] text-on-surface">
+              <li class="flex items-center gap-6"><span class="w-1.5 h-1.5 bg-primary inline-block"></span> 240m² de Área Privativa</li>
+              <li class="flex items-center gap-6"><span class="w-1.5 h-1.5 bg-primary inline-block"></span> 4 Vagas + Depósito</li>
+              <li class="flex items-center gap-6"><span class="w-1.5 h-1.5 bg-primary inline-block"></span> Closet Master 18m²</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Plant 2 -->
+        <div class="plant-panel hidden grid-cols-1 lg:grid-cols-2 gap-24 items-center" data-plant-panel="2">
+          <div class="bg-white p-12 shadow-sm border border-outline-variant/10">
+            <img class="w-full h-auto opacity-90" src="https://placehold.co/700x500/f6f3f2/b3935d?text=PENTHOUSE+400+M2" alt="Planta penthouse 400m²" loading="lazy"/>
+          </div>
+          <div class="space-y-10">
+            <h3 class="font-headline text-4xl italic leading-tight">Penthouse</h3>
+            <p class="text-stone-500 text-lg leading-relaxed font-light">O andar mais alto, exclusivo para quem não abre mão do extraordinário. Vista 360° da cidade.</p>
+            <ul class="space-y-6 font-label text-[10px] uppercase tracking-[0.3em] text-on-surface">
+              <li class="flex items-center gap-6"><span class="w-1.5 h-1.5 bg-primary inline-block"></span> 400m² duplex</li>
+              <li class="flex items-center gap-6"><span class="w-1.5 h-1.5 bg-primary inline-block"></span> Piscina e rooftop privativos</li>
+              <li class="flex items-center gap-6"><span class="w-1.5 h-1.5 bg-primary inline-block"></span> 5 Vagas + 2 Depósitos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5. DIFERENCIAIS ===== -->
+    <section class="bg-on-background text-on-primary py-40 px-8" id="diferenciais" aria-label="Diferenciais do imóvel">
+      <div class="max-w-7xl mx-auto text-center mb-32">
+        <span class="text-primary font-label uppercase tracking-[0.4em] text-[10px] mb-4 block">O Ecossistema</span>
+        <h2 class="font-headline text-5xl md:text-6xl mb-8 italic">Lazer &amp; Diferenciais</h2>
+        <p class="text-stone-400 max-w-2xl mx-auto text-lg font-light leading-relaxed">Um ecossistema completo de bem-estar projetado para elevar sua rotina ao extraordinário.</p>
+      </div>
+      <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-y-24 gap-x-8" id="diffs-grid" data-bind="diferenciais-list">
+        <div class="text-center group">
+          <span class="material-symbols-outlined text-3xl text-primary mb-8 block" style="font-variation-settings:'FILL' 1">fitness_center</span>
+          <h5 class="font-label uppercase text-[10px] tracking-[0.4em] mb-4">Academia High-Tech</h5>
+          <div class="w-8 h-[1px] bg-primary/30 mx-auto group-hover:w-20 group-hover:bg-primary transition-all duration-700"></div>
+        </div>
+        <div class="text-center group">
+          <span class="material-symbols-outlined text-3xl text-primary mb-8 block" style="font-variation-settings:'FILL' 1">laptop_mac</span>
+          <h5 class="font-label uppercase text-[10px] tracking-[0.4em] mb-4">Coworking Privé</h5>
+          <div class="w-8 h-[1px] bg-primary/30 mx-auto group-hover:w-20 group-hover:bg-primary transition-all duration-700"></div>
+        </div>
+        <div class="text-center group">
+          <span class="material-symbols-outlined text-3xl text-primary mb-8 block" style="font-variation-settings:'FILL' 1">pets</span>
+          <h5 class="font-label uppercase text-[10px] tracking-[0.4em] mb-4">Espaço Pet</h5>
+          <div class="w-8 h-[1px] bg-primary/30 mx-auto group-hover:w-20 group-hover:bg-primary transition-all duration-700"></div>
+        </div>
+        <div class="text-center group">
+          <span class="material-symbols-outlined text-3xl text-primary mb-8 block" style="font-variation-settings:'FILL' 1">movie</span>
+          <h5 class="font-label uppercase text-[10px] tracking-[0.4em] mb-4">Cinema VIP</h5>
+          <div class="w-8 h-[1px] bg-primary/30 mx-auto group-hover:w-20 group-hover:bg-primary transition-all duration-700"></div>
+        </div>
+        <div class="text-center group">
+          <span class="material-symbols-outlined text-3xl text-primary mb-8 block" style="font-variation-settings:'FILL' 1">apartment</span>
+          <h5 class="font-label uppercase text-[10px] tracking-[0.4em] mb-4">Rooftop Lounge</h5>
+          <div class="w-8 h-[1px] bg-primary/30 mx-auto group-hover:w-20 group-hover:bg-primary transition-all duration-700"></div>
+        </div>
+        <div class="text-center group">
+          <span class="material-symbols-outlined text-3xl text-primary mb-8 block" style="font-variation-settings:'FILL' 1">pool</span>
+          <h5 class="font-label uppercase text-[10px] tracking-[0.4em] mb-4">Piscina Aquecida</h5>
+          <div class="w-8 h-[1px] bg-primary/30 mx-auto group-hover:w-20 group-hover:bg-primary transition-all duration-700"></div>
+        </div>
+        <div class="text-center group">
+          <span class="material-symbols-outlined text-3xl text-primary mb-8 block" style="font-variation-settings:'FILL' 1">restaurant</span>
+          <h5 class="font-label uppercase text-[10px] tracking-[0.4em] mb-4">Gourmet &amp; Wine</h5>
+          <div class="w-8 h-[1px] bg-primary/30 mx-auto group-hover:w-20 group-hover:bg-primary transition-all duration-700"></div>
+        </div>
+        <div class="text-center group">
+          <span class="material-symbols-outlined text-3xl text-primary mb-8 block" style="font-variation-settings:'FILL' 1">security</span>
+          <h5 class="font-label uppercase text-[10px] tracking-[0.4em] mb-4">Segurança 24h</h5>
+          <div class="w-8 h-[1px] bg-primary/30 mx-auto group-hover:w-20 group-hover:bg-primary transition-all duration-700"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 6. FICHA TÉCNICA ===== -->
+    <section class="py-32 px-8 bg-white" id="ficha" aria-label="Ficha técnica do imóvel">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-20">
+          <span class="text-primary font-label uppercase tracking-[0.4em] text-[10px] mb-4 block">Especificações</span>
+          <h2 class="font-headline text-5xl italic">Ficha Técnica</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-0 border border-outline-variant/30">
+          <div class="border-r border-outline-variant/30">
+            <div class="flex justify-between items-center py-6 px-8 border-b border-outline-variant/20">
+              <span class="font-label text-[10px] uppercase tracking-[0.3em] text-stone-400">Tipo</span>
+              <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface font-medium" data-bind="tipo">Apartamento</span>
+            </div>
+            <div class="flex justify-between items-center py-6 px-8 border-b border-outline-variant/20 bg-surface-container-low">
+              <span class="font-label text-[10px] uppercase tracking-[0.3em] text-stone-400">Dormitórios</span>
+              <span class="font-headline text-2xl italic text-primary" data-stat="dorms">3</span>
+            </div>
+            <div class="flex justify-between items-center py-6 px-8 border-b border-outline-variant/20">
+              <span class="font-label text-[10px] uppercase tracking-[0.3em] text-stone-400">Suítes</span>
+              <span class="font-headline text-2xl italic text-primary" data-stat="suites">3</span>
+            </div>
+            <div class="flex justify-between items-center py-6 px-8 border-b border-outline-variant/20 bg-surface-container-low">
+              <span class="font-label text-[10px] uppercase tracking-[0.3em] text-stone-400">Banheiros</span>
+              <span class="font-headline text-2xl italic text-on-surface" data-stat="banh">4</span>
+            </div>
+            <div class="flex justify-between items-center py-6 px-8">
+              <span class="font-label text-[10px] uppercase tracking-[0.3em] text-stone-400">Vagas</span>
+              <span class="font-headline text-2xl italic text-on-surface" data-stat="vagas">3</span>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between items-center py-6 px-8 border-b border-outline-variant/20">
+              <span class="font-label text-[10px] uppercase tracking-[0.3em] text-stone-400">Área privativa</span>
+              <span class="font-headline text-2xl italic text-primary"><span data-stat="m2max">185</span> m²</span>
+            </div>
+            <div class="flex justify-between items-center py-6 px-8 border-b border-outline-variant/20 bg-surface-container-low">
+              <span class="font-label text-[10px] uppercase tracking-[0.3em] text-stone-400">Status</span>
+              <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface font-medium" data-bind="status">Pronto para morar</span>
+            </div>
+            <div class="flex justify-between items-center py-6 px-8 border-b border-outline-variant/20">
+              <span class="font-label text-[10px] uppercase tracking-[0.3em] text-stone-400">Construtora</span>
+              <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface font-medium" data-bind="construtora">Lumière Engenharia</span>
+            </div>
+            <div class="flex justify-between items-center py-6 px-8 border-b border-outline-variant/20 bg-surface-container-low">
+              <span class="font-label text-[10px] uppercase tracking-[0.3em] text-stone-400">Bairro</span>
+              <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface font-medium" data-bind="bairro">Itaim Bibi</span>
+            </div>
+            <div class="flex justify-between items-center py-6 px-8">
+              <span class="font-label text-[10px] uppercase tracking-[0.3em] text-stone-400">Cidade</span>
+              <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface font-medium" data-bind="cidade">São Paulo</span>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-12">
+          <a href="#contato" class="inline-block bg-primary text-on-primary px-10 py-5 font-label uppercase text-[10px] tracking-[0.4em] hover:bg-on-primary-container transition-colors duration-500">
+            Solicitar Memorial Descritivo
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 7. BAIRRO ===== -->
+    <section class="py-32 px-8 bg-surface-container-low" id="bairro" aria-label="O bairro">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div class="relative aspect-square bg-surface-container-high overflow-hidden group">
+          <img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 group-hover:scale-105" src="https://placehold.co/700x700/2a2520/b3935d?text=MAPA+DO+BAIRRO" alt="Localização privilegiada" loading="lazy"/>
+          <div class="absolute inset-0 bg-primary/10 mix-blend-overlay pointer-events-none"></div>
+        </div>
+        <div>
+          <span class="text-primary font-label uppercase tracking-[0.4em] text-[10px] mb-4 block">Localização Privilegiada</span>
+          <h2 class="font-headline text-5xl mb-16 italic" data-bind="bairro">O Bairro</h2>
+          <div class="space-y-12">
+            <div class="flex items-start gap-8 group">
+              <div class="w-14 h-14 flex items-center justify-center border border-outline-variant/30 group-hover:bg-primary group-hover:border-primary group-hover:text-on-primary transition-all duration-500 shrink-0">
+                <span class="material-symbols-outlined !text-xl">restaurant</span>
+              </div>
+              <div>
+                <h4 class="font-headline text-xl mb-2">Alta Gastronomia</h4>
+                <p class="text-stone-500 text-sm font-light">Os melhores restaurantes e chefs a poucos metros.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-8 group">
+              <div class="w-14 h-14 flex items-center justify-center border border-outline-variant/30 group-hover:bg-primary group-hover:border-primary group-hover:text-on-primary transition-all duration-500 shrink-0">
+                <span class="material-symbols-outlined !text-xl">park</span>
+              </div>
+              <div>
+                <h4 class="font-headline text-xl mb-2">Parques &amp; Lazer</h4>
+                <p class="text-stone-500 text-sm font-light">O equilíbrio entre o urbano sofisticado e o natural.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-8 group">
+              <div class="w-14 h-14 flex items-center justify-center border border-outline-variant/30 group-hover:bg-primary group-hover:border-primary group-hover:text-on-primary transition-all duration-500 shrink-0">
+                <span class="material-symbols-outlined !text-xl">shopping_bag</span>
+              </div>
+              <div>
+                <h4 class="font-headline text-xl mb-2">Shopping Premium</h4>
+                <p class="text-stone-500 text-sm font-light">As grifes internacionais como extensão do seu lar.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 8. LOCALIZAÇÃO (mapa) ===== -->
+    <section class="py-32 px-8 bg-white" id="localizacao" aria-label="Localização do imóvel">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <span class="text-primary font-label uppercase tracking-[0.4em] text-[10px] mb-4 block">Onde fica</span>
+          <h2 class="font-headline text-5xl italic">Localização</h2>
+          <p class="text-stone-500 mt-4 font-light" data-bind="endereco">Av. Brigadeiro Faria Lima, 4500 — Itaim Bibi, São Paulo</p>
+        </div>
+        <div class="border border-outline-variant/30 overflow-hidden" style="height:480px">
+          <iframe data-bind="mapa"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656!2d-46.680!3d-23.587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce575!2sItaim+Bibi!5e0!3m2!1spt-BR!2sbr"
+            width="100%" height="100%" style="border:0" allowfullscreen loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Localização do empreendimento">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 9. FAQ ===== -->
+    <section class="py-32 px-8 bg-surface-container-low" id="faq" aria-label="Perguntas frequentes">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-20">
+          <span class="text-primary font-label uppercase tracking-[0.4em] text-[10px] mb-4 block">Esclarecimentos</span>
+          <h2 class="font-headline text-5xl italic">Perguntas Frequentes</h2>
+        </div>
+        <div class="space-y-0 border-t border-outline-variant/30">
+          <details class="group border-b border-outline-variant/30">
+            <summary class="flex justify-between items-center py-8 cursor-pointer list-none">
+              <span class="font-label text-[11px] uppercase tracking-[0.3em] text-on-surface pr-8">Quantas suítes tem o apartamento?</span>
+              <span class="text-primary shrink-0">
+                <span class="faq-plus material-symbols-outlined !text-lg">add</span>
+                <span class="faq-minus material-symbols-outlined !text-lg">remove</span>
+              </span>
+            </summary>
+            <p class="text-stone-500 text-sm font-light pb-8 leading-relaxed">O apartamento possui <span data-stat="suites">3</span> suítes, com a master contando com closet e banheiro com banheira de imersão e chuveiro duplo.</p>
+          </details>
+          <details class="group border-b border-outline-variant/30">
+            <summary class="flex justify-between items-center py-8 cursor-pointer list-none">
+              <span class="font-label text-[11px] uppercase tracking-[0.3em] text-on-surface pr-8">Qual a metragem privativa?</span>
+              <span class="text-primary shrink-0">
+                <span class="faq-plus material-symbols-outlined !text-lg">add</span>
+                <span class="faq-minus material-symbols-outlined !text-lg">remove</span>
+              </span>
+            </summary>
+            <p class="text-stone-500 text-sm font-light pb-8 leading-relaxed"><span data-stat="m2max">185</span>m² de área privativa em planta aberta e otimizada, com varanda integrada e pé-direito alto.</p>
+          </details>
+          <details class="group border-b border-outline-variant/30">
+            <summary class="flex justify-between items-center py-8 cursor-pointer list-none">
+              <span class="font-label text-[11px] uppercase tracking-[0.3em] text-on-surface pr-8">O imóvel está pronto para morar?</span>
+              <span class="text-primary shrink-0">
+                <span class="faq-plus material-symbols-outlined !text-lg">add</span>
+                <span class="faq-minus material-symbols-outlined !text-lg">remove</span>
+              </span>
+            </summary>
+            <p class="text-stone-500 text-sm font-light pb-8 leading-relaxed">Sim. Status atual: <span data-bind="status">Pronto para morar</span>. Entrega imediata após assinatura do contrato.</p>
+          </details>
+          <details class="group border-b border-outline-variant/30">
+            <summary class="flex justify-between items-center py-8 cursor-pointer list-none">
+              <span class="font-label text-[11px] uppercase tracking-[0.3em] text-on-surface pr-8">Quantas vagas de garagem?</span>
+              <span class="text-primary shrink-0">
+                <span class="faq-plus material-symbols-outlined !text-lg">add</span>
+                <span class="faq-minus material-symbols-outlined !text-lg">remove</span>
+              </span>
+            </summary>
+            <p class="text-stone-500 text-sm font-light pb-8 leading-relaxed"><span data-stat="vagas">3</span> vagas cobertas e privativas com elevador direto da garagem ao andar.</p>
+          </details>
+          <details class="group border-b border-outline-variant/30">
+            <summary class="flex justify-between items-center py-8 cursor-pointer list-none">
+              <span class="font-label text-[11px] uppercase tracking-[0.3em] text-on-surface pr-8">Aceita financiamento ou FGTS?</span>
+              <span class="text-primary shrink-0">
+                <span class="faq-plus material-symbols-outlined !text-lg">add</span>
+                <span class="faq-minus material-symbols-outlined !text-lg">remove</span>
+              </span>
+            </summary>
+            <p class="text-stone-500 text-sm font-light pb-8 leading-relaxed">Sim. Financiamento bancário, FGTS e permuta de imóvel são aceitos. Consulte as condições com nosso especialista.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 10. BLOCO COMERCIAL ===== -->
+    <section class="bg-on-background text-on-primary py-40 px-8" id="preco" data-price-block aria-label="Condições comerciais">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="text-primary font-label uppercase tracking-[0.5em] text-[10px] mb-8 block">Investimento</span>
+        <h2 class="font-headline text-5xl md:text-7xl mb-6 italic leading-tight">Valor a partir de</h2>
+        <p class="font-headline text-4xl md:text-6xl text-primary italic mb-4" data-bind="preco">R$ 4.800.000</p>
+        <p class="text-stone-400 font-label text-[10px] uppercase tracking-[0.4em] mb-16">Financiamento · FGTS · Permuta aceitos</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-6">
+          <a href="#contato" class="bg-primary text-on-primary px-12 py-6 font-label uppercase text-[10px] tracking-[0.4em] hover:bg-on-primary-container transition-colors duration-500">
+            Solicitar Proposta
+          </a>
+          <a class="border border-white/30 text-white px-12 py-6 font-label uppercase text-[10px] tracking-[0.4em] hover:border-primary hover:text-primary transition-colors duration-500" data-wpp-link href="https://wa.me/5511988776655">
+            WhatsApp Direto
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 11. CONTATO ===== -->
+    <section class="py-40 px-8 bg-white" id="contato" aria-label="Formulário de contato">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+        <div class="hidden lg:block">
+          <div class="relative">
+            <img class="w-full aspect-[4/5] object-cover" src="https://placehold.co/600x750/1a1814/b3935d?text=DETALHE+ARQUITETONICO" alt="Detalhe arquitetônico" loading="lazy"/>
+            <div class="absolute inset-0 border-[20px] border-primary/5 m-10 pointer-events-none"></div>
+          </div>
+        </div>
+        <div class="flex flex-col justify-center">
+          <span class="text-primary font-label uppercase tracking-[0.5em] text-[10px] mb-6 block" data-bind="empresa">Lumière Residences</span>
+          <h2 class="font-headline text-5xl md:text-6xl mb-10 italic leading-tight">Solicite<br>Informações</h2>
+          <p class="text-stone-500 text-lg mb-16 leading-relaxed font-light">Agende uma apresentação exclusiva e descubra cada detalhe do seu futuro endereço.</p>
+          <form class="space-y-12" id="lead-form" novalidate>
+            <div class="relative">
+              <label class="block font-label text-[10px] uppercase tracking-[0.3em] text-stone-400 mb-2">Nome Completo</label>
+              <input class="w-full bg-transparent border-0 border-b border-outline-variant/50 py-4 px-0 focus:ring-0 focus:border-primary placeholder:text-stone-300 transition-colors text-on-surface" placeholder="Seu nome" type="text" name="nome" required/>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div>
+                <label class="block font-label text-[10px] uppercase tracking-[0.3em] text-stone-400 mb-2">E-mail</label>
+                <input class="w-full bg-transparent border-0 border-b border-outline-variant/50 py-4 px-0 focus:ring-0 focus:border-primary placeholder:text-stone-300 transition-colors text-on-surface" placeholder="seu@email.com" type="email" name="email"/>
+              </div>
+              <div>
+                <label class="block font-label text-[10px] uppercase tracking-[0.3em] text-stone-400 mb-2">Telefone / WhatsApp</label>
+                <input class="w-full bg-transparent border-0 border-b border-outline-variant/50 py-4 px-0 focus:ring-0 focus:border-primary placeholder:text-stone-300 transition-colors text-on-surface" placeholder="(00) 00000-0000" type="tel" name="telefone" required/>
+              </div>
+            </div>
+            <button class="w-full bg-primary text-on-primary py-7 font-label uppercase text-[10px] tracking-[0.5em] hover:bg-on-primary-container transition-all duration-500" type="submit">
+              Solicitar Apresentação
+            </button>
+            <a class="flex items-center justify-center gap-3 w-full border border-outline-variant/50 text-on-surface py-5 font-label uppercase text-[10px] tracking-[0.4em] hover:border-primary hover:text-primary transition-colors duration-300" data-wpp-link href="https://wa.me/5511988776655">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Conversar no WhatsApp
+            </a>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 11b. REFORÇO FINAL ===== -->
+    <section class="py-24 px-8 bg-surface-container-low text-center" aria-label="Reforço final">
+      <p class="font-headline italic text-3xl text-on-surface mb-8">Unidades extremamente limitadas.</p>
+      <a href="#contato" class="inline-block bg-primary text-on-primary px-10 py-5 font-label uppercase text-[10px] tracking-[0.4em] hover:bg-on-primary-container transition-colors duration-500">
+        Garantir minha unidade
+      </a>
+    </section>
+
+  </main>
+
+  <!-- ===== 12. RODAPÉ ===== -->
+  <footer class="bg-stone-50 w-full py-24 px-8 border-t border-stone-200" id="rodape" role="contentinfo">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-start gap-16">
+      <div class="max-w-xs">
+        <span class="font-headline text-xl uppercase tracking-[0.3em] text-primary block mb-4 italic" data-bind="empresa">LUMIÈRE RESIDENCES</span>
+        <p class="text-stone-400 font-sans text-xs tracking-[0.1em] leading-loose">A excelência em cada detalhe, do alicerce ao acabamento.</p>
+        <p class="text-stone-500 font-sans text-xs mt-4" data-bind="telefone">(11) 98877-6655</p>
+      </div>
+      <div class="grid grid-cols-2 gap-x-24 gap-y-6">
+        <a class="font-sans text-[10px] tracking-[0.2em] uppercase text-stone-500 hover:text-primary transition-colors" href="#">Galeria</a>
+        <a class="font-sans text-[10px] tracking-[0.2em] uppercase text-stone-500 hover:text-primary transition-colors" href="#plantas">Plantas</a>
+        <a class="font-sans text-[10px] tracking-[0.2em] uppercase text-stone-500 hover:text-primary transition-colors" href="#diferenciais">Diferenciais</a>
+        <a class="font-sans text-[10px] tracking-[0.2em] uppercase text-stone-500 hover:text-primary transition-colors" href="#contato">Contato</a>
+      </div>
+      <div class="text-left lg:text-right">
+        <p class="text-primary font-label text-[10px] tracking-[0.3em] uppercase mb-4">Endereço</p>
+        <p class="text-stone-500 font-sans text-xs tracking-wide leading-relaxed" data-bind="endereco">Av. Brigadeiro Faria Lima, 4500<br>São Paulo, SP</p>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto mt-16 pt-10 border-t border-stone-200 flex justify-between items-center flex-wrap gap-4">
+      <p class="text-stone-400 font-sans text-[10px] tracking-[0.2em] uppercase">© 2025 <span data-bind="empresa">Lumière Residences</span>. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- FAB WhatsApp -->
+  <a class="fixed bottom-8 right-8 z-50 w-14 h-14 bg-[#25d366] flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300" data-wpp-link href="https://wa.me/5511988776655" aria-label="WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

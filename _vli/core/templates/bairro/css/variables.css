@@ -1,0 +1,57 @@
+/* ============================================
+   PALETA CONFIGURÁVEL — TEMPLATE BAIRRO
+   Paleta padrão: forest (verde sofisticado)
+   Para trocar cores: altere SOMENTE este arquivo
+   ============================================ */
+:root {
+  --color-primary: #1b4332;
+  --color-primary-light: #2d6a4f;
+  --color-primary-dark: #0f2b1e;
+  --color-accent: #52b788;
+  --color-accent-light: #74c69d;
+  --color-accent-dark: #40916c;
+
+  --color-bg: #ffffff;
+  --color-bg-alt: #f4f8f5;
+  --color-bg-dark: #1b4332;
+  --color-bg-section: #f8faf8;
+  --color-text: #1d2d25;
+  --color-text-light: #5a7a65;
+  --color-text-inverse: #ffffff;
+  --color-border: #d0e8d8;
+
+  --color-cta: var(--color-accent-dark);
+  --color-cta-hover: var(--color-primary-light);
+  --color-cta-text: #ffffff;
+
+  --gradient-hero: linear-gradient(180deg, rgba(27,67,50,0.4) 0%, rgba(27,67,50,0.85) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
+  --gradient-dark: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+
+  --font-heading: 'Lora', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-accent: 'Lora', serif;
+
+  --font-size-hero: clamp(2rem, 4.5vw, 3.8rem);
+  --font-size-h2: clamp(1.4rem, 3vw, 2.2rem);
+  --font-size-h3: clamp(1.1rem, 2vw, 1.4rem);
+  --font-size-body: 1rem;
+  --font-size-small: 0.875rem;
+
+  --spacing-section: clamp(3.5rem, 8vw, 7rem);
+  --spacing-block: clamp(1.5rem, 4vw, 3rem);
+  --spacing-element: 1rem;
+
+  --border-radius: 10px;
+  --border-radius-sm: 6px;
+  --border-radius-lg: 20px;
+  --shadow-card: 0 2px 16px rgba(27,67,50,0.07);
+  --shadow-elevated: 0 8px 32px rgba(27,67,50,0.12);
+  --shadow-cta: 0 4px 16px rgba(64,145,108,0.3);
+
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+
+  --container-max: 1200px;
+  --header-height: 68px;
+}

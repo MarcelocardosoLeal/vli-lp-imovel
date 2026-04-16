@@ -1,0 +1,34 @@
+{
+  "name": "lp-imovel",
+  "version": "0.1.0",
+  "description": "VLI — Venda com Landing de Imóvel. Sistema de criação guiada de Landing Pages para venda de imóveis com 15 agentes especialistas.",
+  "author": "Marcelo Leal <marcelocardosoleal@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "landing-page",
+    "real-estate",
+    "imovel",
+    "immobiliare",
+    "seo",
+    "ai-agents",
+    "claude",
+    "gemini",
+    "opencode",
+    "website-generator"
+  ],
+  "bin": {
+    "lp-imovel": "./bin/install.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MarcelocardosoLeal/vli-lp-imovel"
+  },
+  "files": [
+    "bin/",
+    "_config/",
+    "core/"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ocean-gold": {
+    "primary": "#0c2340", "primaryLight": "#163a5f", "primaryDark": "#061729",
+    "accent": "#c5a55a", "accentLight": "#d4b96e", "accentDark": "#a88b3d",
+    "bg": "#ffffff", "bgAlt": "#f7f5f0", "bgSection": "#faf8f4", "text": "#2d2d2d"
+  },
+  "midnight": {
+    "primary": "#1a1a2e", "primaryLight": "#16213e", "primaryDark": "#0f0f1a",
+    "accent": "#e94560", "accentLight": "#ff6b6b", "accentDark": "#c23152",
+    "bg": "#ffffff", "bgAlt": "#f5f5f7", "bgSection": "#fafafc", "text": "#2d2d2d"
+  },
+  "forest": {
+    "primary": "#1b4332", "primaryLight": "#2d6a4f", "primaryDark": "#0f2b1e",
+    "accent": "#52b788", "accentLight": "#74c69d", "accentDark": "#40916c",
+    "bg": "#ffffff", "bgAlt": "#f4f8f5", "bgSection": "#f8faf8", "text": "#1d2d25"
+  },
+  "urban": {
+    "primary": "#212529", "primaryLight": "#343a40", "primaryDark": "#0d0f11",
+    "accent": "#ff6f00", "accentLight": "#ff8f33", "accentDark": "#cc5900",
+    "bg": "#ffffff", "bgAlt": "#f5f5f5", "bgSection": "#fafafa", "text": "#212529"
+  },
+  "pearl": {
+    "primary": "#3d3425", "primaryLight": "#5a4e3a", "primaryDark": "#2a2418",
+    "accent": "#8b6914", "accentLight": "#a68327", "accentDark": "#6b500a",
+    "bg": "#ffffff", "bgAlt": "#f8f6f0", "bgSection": "#fbf9f4", "text": "#2d2820"
+  },
+  "royal": {
+    "primary": "#2d1b69", "primaryLight": "#4527a0", "primaryDark": "#1a0e42",
+    "accent": "#e8b931", "accentLight": "#f0cc5c", "accentDark": "#c49b1f",
+    "bg": "#ffffff", "bgAlt": "#f7f4fb", "bgSection": "#faf8fd", "text": "#2d2d2d"
+  }
+}

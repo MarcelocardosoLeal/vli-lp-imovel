@@ -1,0 +1,21 @@
+/* Paleta: ocean-gold — Luxo clássico (azul marinho + dourado). Inspirada em Heaven Residences. */
+:root {
+  --color-primary: #0c2340;
+  --color-primary-light: #163a5f;
+  --color-primary-dark: #061729;
+  --color-accent: #c5a55a;
+  --color-accent-light: #d4b96e;
+  --color-accent-dark: #a88b3d;
+  --color-bg: #ffffff;
+  --color-bg-alt: #f7f5f0;
+  --color-bg-dark: #0c2340;
+  --color-bg-section: #faf8f4;
+  --color-text: #2d2d2d;
+  --color-text-light: #7a7a7a;
+  --color-text-inverse: #ffffff;
+  --color-border: #e8e2d6;
+  --gradient-hero: linear-gradient(180deg, rgba(12, 35, 64, 0.55) 0%, rgba(12, 35, 64, 0.92) 100%);
+  --gradient-accent: linear-gradient(135deg, #c5a55a 0%, #d4b96e 100%);
+  --gradient-dark: linear-gradient(135deg, #0c2340 0%, #163a5f 100%);
+  --shadow-cta: 0 4px 20px rgba(197, 165, 90, 0.35);
+}

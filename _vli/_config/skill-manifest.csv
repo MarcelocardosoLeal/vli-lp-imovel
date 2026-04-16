@@ -1,0 +1,7 @@
+canonicalId,name,command,description,module,path
+"vli-lp","lp","/lp","Comando unico que cria uma LP completa do briefing ate a publicacao","core","core/skills/lp/SKILL.md"
+"vli-help","lp-help","/lp-help","Ajuda contextual: ensina o metodo VLI e sugere proximo passo","core","core/skills/lp-help/SKILL.md"
+"vli-imagens","lp-imagens","/lp-imagens","Roda apenas o pipeline de imagens em uma LP existente","core","core/skills/lp-imagens/SKILL.md"
+"vli-revisar","lp-revisar","/lp-revisar","Revisao tecnica completa de uma LP existente","core","core/skills/lp-revisar/SKILL.md"
+"vli-publicar","lp-publicar","/lp-publicar","Publica uma LP existente (Pages, Netlify, ZIP)","core","core/skills/lp-publicar/SKILL.md"
+"vli-novo-template","lp-novo-template","/lp-novo-template","Helper para adicionar template novo ao sistema","core","core/skills/lp-novo-template/SKILL.md"

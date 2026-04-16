@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel de Landing Pages — Imóveis</title>
+  <link rel="stylesheet" href="painel/painel.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏢</text></svg>">
+</head>
+<body>
+
+  <header class="topbar">
+    <h1>🏢 Painel de Landing Pages</h1>
+    <div class="topbar__actions">
+      <button class="btn btn--ghost" id="btn-import">Importar JSON</button>
+      <button class="btn btn--ghost" id="btn-export-all">Exportar tudo</button>
+      <button class="btn btn--primary" id="btn-new">+ Nova LP</button>
+    </div>
+  </header>
+
+  <!-- ========== LISTA DE LPs ========== -->
+  <main class="view view--list" id="view-list">
+    <div class="container">
+      <div class="empty-state" id="empty-state">
+        <div class="empty-state__icon">🏗️</div>
+        <h2>Nenhuma LP criada ainda</h2>
+        <p>Clique em <strong>+ Nova LP</strong> pra começar.</p>
+        <p class="hint">💬 Prefere conversar com o Claude? Digite <code>/nova-lp</code> que ele te entrevista e cria sozinho.</p>
+      </div>
+
+      <div class="lp-grid" id="lp-grid"></div>
+    </div>
+  </main>
+
+  <!-- ========== EDITOR DE LP ========== -->
+  <main class="view view--editor hidden" id="view-editor">
+    <div class="editor">
+      <aside class="editor__side">
+        <button class="btn btn--ghost btn--back" id="btn-back">← Voltar</button>
+
+        <h2 class="editor__title" id="editor-title">Nova LP</h2>
+
+        <nav class="tabs">
+          <button class="tab tab--active" data-tab="basico">1. Básico</button>
+          <button class="tab" data-tab="visual">2. Visual</button>
+          <button class="tab" data-tab="secoes">3. Seções</button>
+          <button class="tab" data-tab="dados">4. Dados</button>
+          <button class="tab" data-tab="avancado">5. Avançado</button>
+        </nav>
+
+        <div class="editor__footer">
+          <button class="btn btn--danger btn--sm" id="btn-delete">Apagar</button>
+          <button class="btn btn--primary" id="btn-open">▶ Abrir LP</button>
+        </div>
+      </aside>
+
+      <section class="editor__main">
+
+        <!-- TAB 1: BÁSICO -->
+        <div class="tab-panel tab-panel--active" data-panel="basico">
+          <h3>Identificação da LP</h3>
+
+          <label class="field">
+            <span class="field__label">Nome interno (slug) <em>*</em></span>
+            <input type="text" id="lp-slug" placeholder="aurora-jardim-europa" pattern="[a-z0-9-]+">
+            <small class="field__hint">Sem espaços, só letras minúsculas, números e hífen.</small>
+          </label>
+
+          <label class="field">
+            <span class="field__label">Nome do imóvel <em>*</em></span>
+            <input type="text" id="lp-nome" placeholder="Edifício Aurora">
+          </label>
+
+          <label class="field">
+            <span class="field__label">Tipo do imóvel <em>*</em></span>
+            <select id="lp-tipo">
+              <option value="">— escolher —</option>
+              <option>Apartamento</option>
+              <option>Casa</option>
+              <option>Cobertura</option>
+              <option>Studio</option>
+              <option>Sala comercial</option>
+              <option>Terreno</option>
+              <option>Loft</option>
+            </select>
+          </label>
+
+          <div class="field-row">
+            <label class="field">
+              <span class="field__label">Bairro <em>*</em></span>
+              <input type="text" id="lp-bairro" placeholder="Jardim Europa">
+            </label>
+            <label class="field">
+              <span class="field__label">Cidade <em>*</em></span>
+              <input type="text" id="lp-cidade" placeholder="São Paulo">
+            </label>
+            <label class="field field--narrow">
+              <span class="field__label">UF</span>
+              <input type="text" id="lp-uf" placeholder="SP" maxlength="2">
+            </label>
+          </div>
+        </div>
+
+        <!-- TAB 2: VISUAL -->
+        <div class="tab-panel" data-panel="visual">
+          <h3>Template</h3>
+          <div class="template-grid">
+            <label class="template-card template-card--active">
+              <input type="radio" name="lp-template" value="vitrine" checked>
+              <div class="template-card__preview template-card__preview--vitrine"></div>
+              <strong>Vitrine</strong>
+              <small>Premium, hero impactante, galeria filtrada</small>
+            </label>
+            <label class="template-card">
+              <input type="radio" name="lp-template" value="ficha">
+              <div class="template-card__preview template-card__preview--ficha"></div>
+              <strong>Ficha</strong>
+              <small>Técnico, data-forward, escuro</small>
+            </label>
+            <label class="template-card">
+              <input type="radio" name="lp-template" value="bairro">
+              <div class="template-card__preview template-card__preview--bairro"></div>
+              <strong>Bairro</strong>
+              <small>Lifestyle, verde, casas/condomínios</small>
+            </label>
+            <label class="template-card">
+              <input type="radio" name="lp-template" value="light">
+              <div class="template-card__preview template-card__preview--light"></div>
+              <strong>Light</strong>
+              <small>Editorial claro, luxo minimalista, tom boutique</small>
+            </label>
+          </div>
+
+          <h3>Paleta de cores</h3>
+          <div class="palette-grid" id="palette-grid"></div>
+
+          <p class="hint">
+            💬 <strong>Quer uma paleta personalizada?</strong>
+            <button class="btn-claude" data-prompt='Cria uma paleta personalizada pro template vitrine com tons [DESCREVA: ex.: "terrosos com verde-musgo"]. Salva como css/palettes/<nome>.css'>Copiar prompt pro Claude</button>
+          </p>
+        </div>
+
+        <!-- TAB 3: SEÇÕES -->
+        <div class="tab-panel" data-panel="secoes">
+          <h3>Seções da LP</h3>
+          <p class="hint">Marque o que você quer exibir. Seções essenciais (hero, contato) não podem ser desligadas.</p>
+
+          <div class="section-list" id="section-list"></div>
+
+          <p class="hint">
+            💬 <strong>Quer adicionar uma seção que não existe?</strong>
+            <button class="btn-claude" data-prompt='Adiciona uma seção nova ao template vitrine: [DESCREVA O QUE QUER]. Mantenha a ordem da spec e atualize o config-loader.'>Copiar prompt pro Claude</button>
+          </p>
+        </div>
+
+        <!-- TAB 4: DADOS -->
+        <div class="tab-panel" data-panel="dados">
+          <h3>Características técnicas</h3>
+          <div class="field-row">
+            <label class="field"><span class="field__label">Dormitórios</span><input type="number" id="lp-dorms" min="0"></label>
+            <label class="field"><span class="field__label">Suítes</span><input type="number" id="lp-suites" min="0"></label>
+            <label class="field"><span class="field__label">Banheiros</span><input type="number" id="lp-banh" min="0"></label>
+            <label class="field"><span class="field__label">Vagas</span><input type="number" id="lp-vagas" min="0"></label>
+          </div>
+          <div class="field-row">
+            <label class="field"><span class="field__label">Área mín (m²)</span><input type="number" id="lp-m2min" min="0"></label>
+            <label class="field"><span class="field__label">Área máx (m²)</span><input type="number" id="lp-m2max" min="0"></label>
+          </div>
+
+          <h3>Diferenciais do imóvel</h3>
+          <p class="field__hint" style="margin-bottom:0.75rem">Marque o que o imóvel oferece. Aparece na seção Diferenciais da LP.</p>
+          <div class="diffs-check-grid" id="diffs-check-grid"></div>
+
+          <h3>Status e construtora</h3>
+          <div class="field-row">
+            <label class="field">
+              <span class="field__label">Status</span>
+              <select id="lp-status">
+                <option value="">—</option>
+                <option>Lançamento</option>
+                <option>Em obras</option>
+                <option>Pronto para morar</option>
+                <option>Usado</option>
+              </select>
+            </label>
+            <label class="field"><span class="field__label">Construtora / Anunciante</span><input type="text" id="lp-construtora"></label>
+          </div>
+
+          <h3>Comercial</h3>
+          <label class="field"><span class="field__label">Preço (deixe vazio se não quiser exibir)</span><input type="text" id="lp-preco" placeholder="R$ 2.850.000"></label>
+
+          <h3>Contato</h3>
+          <div class="field-row">
+            <label class="field"><span class="field__label">Empresa</span><input type="text" id="lp-empresa"></label>
+            <label class="field"><span class="field__label">Telefone</span><input type="text" id="lp-tel" placeholder="(11) 99988-7766"></label>
+            <label class="field"><span class="field__label">WhatsApp (DDI+DDD+nº)</span><input type="text" id="lp-wpp" placeholder="5511999887766"></label>
+          </div>
+
+          <h3>Localização</h3>
+          <label class="field"><span class="field__label">Endereço</span><input type="text" id="lp-endereco" placeholder="Av. Europa, 1500"></label>
+          <label class="field"><span class="field__label">URL embed do Google Maps</span><input type="text" id="lp-mapa" placeholder="https://www.google.com/maps/embed?..."></label>
+
+          <p class="hint">
+            💬 <strong>Lista de diferenciais, FAQ e descrições longas:</strong> melhor pedir ao Claude.
+            <button class="btn-claude" data-prompt='Edita a LP em templates/[SLUG]: gera lista de diferenciais e FAQ a partir dos dados básicos.'>Copiar prompt pro Claude</button>
+          </p>
+        </div>
+
+        <!-- TAB 5: AVANÇADO -->
+        <div class="tab-panel" data-panel="avancado">
+          <h3>Operações que precisam do Claude</h3>
+
+          <div class="claude-op">
+            <h4>📸 Otimizar fotos do imóvel</h4>
+            <p>Redimensiona, comprime e converte pra WebP nos tamanhos certos.</p>
+            <button class="btn-claude" data-prompt='Otimize as fotos em [PASTA] para templates/[SLUG]/img/ usando o script optimize-images.py.'>Copiar prompt</button>
+          </div>
+
+          <div class="claude-op">
+            <h4>✍️ Reescrever texto comercial / FAQ</h4>
+            <p>Texto de hero, descrições, FAQ adaptados ao público-alvo.</p>
+            <button class="btn-claude" data-prompt='Reescreva o texto da LP em templates/[SLUG] pro público [DESCREVA: famílias, jovens executivos, investidores...].'>Copiar prompt</button>
+          </div>
+
+          <div class="claude-op">
+            <h4>🔍 Validar SEO e checklist</h4>
+            <p>Roda o checklist da seção 15 da spec e reporta o que está faltando.</p>
+            <button class="btn-claude" data-prompt='Roda o checklist da seção 15 da spec na LP templates/[SLUG] e me reporta o que falta.'>Copiar prompt</button>
+          </div>
+
+          <div class="claude-op">
+            <h4>📦 Exportar HTML pronto pra publicar</h4>
+            <p>Gera um HTML único com tudo "queimado" dentro, pronto pra subir em hospedagem.</p>
+            <button class="btn-claude" data-prompt='Exporta a LP templates/[SLUG] como um único arquivo HTML com CSS/JS inline e configs aplicadas, pronto pra publicar.'>Copiar prompt</button>
+          </div>
+
+          <h3>Dados brutos da LP (JSON)</h3>
+          <textarea id="lp-json" rows="10" readonly></textarea>
+          <button class="btn btn--ghost btn--sm" id="btn-copy-json">Copiar JSON</button>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- ========== TOAST ========== -->
+  <div class="toast hidden" id="toast"></div>
+
+  <script src="painel/painel.js"></script>
+</body>
+</html>

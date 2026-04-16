@@ -1,0 +1,25 @@
+:root {
+  --color-primary: #e94560;
+  --color-primary-light: #ff6b6b;
+  --color-primary-dark: #c23152;
+  --color-accent: #e94560;
+  --color-accent-light: #ff6b6b;
+  --color-accent-dark: #c23152;
+  --color-bg: #fdfafb;
+  --color-bg-alt: #f6f1f3;
+  --color-bg-section: #ede5e8;
+  --color-bg-dark: #221b20;
+  --color-text: #241f22;
+  --color-text-light: #6d6368;
+  --color-text-inverse: #ffffff;
+  --color-border: #decfd5;
+  --color-cta: var(--color-primary);
+  --color-cta-hover: var(--color-primary-dark);
+  --color-cta-text: #ffffff;
+  --gradient-hero: linear-gradient(180deg, rgba(34, 27, 32, 0.2) 0%, rgba(34, 27, 32, 0.58) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  --gradient-dark: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  --shadow-card: 0 14px 36px rgba(26, 26, 46, 0.08);
+  --shadow-elevated: 0 20px 56px rgba(26, 26, 46, 0.12);
+  --shadow-cta: 0 10px 24px rgba(233, 69, 96, 0.22);
+}

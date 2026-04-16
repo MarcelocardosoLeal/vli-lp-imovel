@@ -1,0 +1,43 @@
+/* ============================================
+   PALETA CONFIGURAVEL - TEMPLATE LIGHT
+   Template editorial claro: acento, fundo leve e tipografia serifada
+   ============================================ */
+
+:root {
+  /* === PALETA PRINCIPAL (pearl editorial) === */
+  --color-primary: #b3935d;
+  --color-primary-light: #d1b57b;
+  --color-primary-dark: #8a6e42;
+  --color-accent: #b3935d;
+  --color-accent-light: #d1b57b;
+  --color-accent-dark: #8a6e42;
+
+  /* === NEUTROS === */
+  --color-bg: #fcf9f8;
+  --color-bg-alt: #f6f3f2;
+  --color-bg-section: #eeebea;
+  --color-bg-dark: #1f1b17;
+  --color-text: #1b1c1c;
+  --color-text-light: #6d665c;
+  --color-text-inverse: #ffffff;
+  --color-border: #d8d0c4;
+
+  /* === CTA === */
+  --color-cta: var(--color-primary);
+  --color-cta-hover: var(--color-primary-dark);
+  --color-cta-text: #ffffff;
+
+  /* === GRADIENTES === */
+  --gradient-hero: linear-gradient(180deg, rgba(27, 28, 28, 0.22) 0%, rgba(27, 28, 28, 0.55) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  --gradient-dark: linear-gradient(135deg, #1f1b17 0%, #2d2821 100%);
+
+  /* === TIPOGRAFIA === */
+  --font-heading: "Newsreader", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* === SOMBRAS === */
+  --shadow-card: 0 14px 36px rgba(31, 27, 23, 0.06);
+  --shadow-elevated: 0 20px 56px rgba(31, 27, 23, 0.1);
+  --shadow-cta: 0 10px 24px rgba(179, 147, 93, 0.22);
+}

@@ -1,0 +1,24 @@
+# VLI - configuracao da instalacao
+# Este arquivo e gerado/atualizado pelo instalador
+
+user_name: ""
+communication_language: "Portugues"
+output_language: "Portugues"
+output_folder: "{project-root}/_lp-output"
+
+defaults:
+  template: "vitrine"
+  palette: "ocean-gold"
+  imageQuality: 82
+  generateWebp: true
+  generateJpgFallback: false
+
+deploy:
+  defaultTarget: "zip"   # zip | github-pages | netlify | folder
+  githubPagesBranch: "gh-pages"
+
+integrations:
+  whatsapp: ""
+  ga4: ""
+  metaPixel: ""
+  webhook: ""

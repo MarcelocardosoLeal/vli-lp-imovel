@@ -1,0 +1,21 @@
+/* Paleta: pearl — Claro premium (bege pérola + dourado bronze, alto padrão leve). */
+:root {
+  --color-primary: #3d3425;
+  --color-primary-light: #5a4e3a;
+  --color-primary-dark: #2a2418;
+  --color-accent: #8b6914;
+  --color-accent-light: #a68327;
+  --color-accent-dark: #6b500a;
+  --color-bg: #ffffff;
+  --color-bg-alt: #f8f6f0;
+  --color-bg-dark: #3d3425;
+  --color-bg-section: #fbf9f4;
+  --color-text: #2d2820;
+  --color-text-light: #7a6e5a;
+  --color-text-inverse: #f8f6f0;
+  --color-border: #e6dfd0;
+  --gradient-hero: linear-gradient(180deg, rgba(61, 52, 37, 0.45) 0%, rgba(61, 52, 37, 0.88) 100%);
+  --gradient-accent: linear-gradient(135deg, #8b6914 0%, #a68327 100%);
+  --gradient-dark: linear-gradient(135deg, #3d3425 0%, #5a4e3a 100%);
+  --shadow-cta: 0 4px 20px rgba(139, 105, 20, 0.35);
+}
