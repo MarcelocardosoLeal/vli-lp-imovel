@@ -9,7 +9,7 @@
 const fs   = require('fs');
 const path = require('path');
 const os   = require('os');
-const { execSync } = require('child_process');
+const { execSync, spawnSync } = require('child_process');
 
 /* ── cores no terminal ── */
 const c = {
@@ -65,6 +65,106 @@ function prompt(question) {
   }
 }
 
+/* ── verificar e instalar Python + Pillow ── */
+function checkPython() {
+  /* tenta python3 depois python */
+  for (const cmd of ['python3', 'python']) {
+    try {
+      const r = spawnSync(cmd, ['--version'], { encoding: 'utf8' });
+      if (r.status === 0) {
+        const ver = (r.stdout || r.stderr || '').trim();
+        return { cmd, ver };
+      }
+    } catch {}
+  }
+  return null;
+}
+
+function installDependencies() {
+  console.log('');
+  info('Verificando dependências...');
+
+  /* ── Node.js (já está rodando, só checa versão) ── */
+  process.stdout.write('  Node.js...');
+  const nodeVer = process.version; /* ex: v20.11.0 */
+  const nodeMajor = parseInt(nodeVer.slice(1));
+  if (nodeMajor >= 18) {
+    console.log(` ${c.green}✓${c.reset} ${gray(nodeVer)}`);
+  } else {
+    console.log(` ${c.red}✗${c.reset}`);
+    warn(`Node.js ${nodeVer} detectado. VLI requer v18+.`);
+    warn('Atualize em: https://nodejs.org');
+  }
+
+  /* ── Python ── */
+  process.stdout.write('  Python...');
+  const py = checkPython();
+  if (py) {
+    console.log(` ${c.green}✓${c.reset} ${gray(py.ver)}`);
+  } else {
+    console.log(` ${c.yellow}não encontrado${c.reset}`);
+    warn('Python não encontrado. Tentando instalar...');
+    const installed = tryInstallPython();
+    if (!installed) {
+      warn('Não foi possível instalar Python automaticamente.');
+      warn('Instale manualmente: https://www.python.org/downloads/');
+      warn('O sistema VLI funcionará, mas o processamento de imagens estará indisponível.');
+      return;
+    }
+  }
+
+  /* ── Pillow ── */
+  process.stdout.write('  Pillow (processamento de imagens)...');
+  const pyCmd = checkPython()?.cmd || 'python3';
+  const pillow = spawnSync(pyCmd, ['-c', 'import PIL'], { encoding: 'utf8' });
+  if (pillow.status === 0) {
+    console.log(` ${c.green}✓${c.reset}`);
+  } else {
+    console.log(` ${c.yellow}instalando...${c.reset}`);
+    process.stdout.write('  ');
+    const install = spawnSync(pyCmd, ['-m', 'pip', 'install', 'Pillow', '--quiet'], {
+      stdio: ['ignore', 'inherit', 'inherit'],
+      encoding: 'utf8',
+    });
+    if (install.status === 0) {
+      ok('Pillow instalado com sucesso.');
+    } else {
+      warn('Não foi possível instalar Pillow automaticamente.');
+      warn(`Execute manualmente: ${pyCmd} -m pip install Pillow`);
+    }
+  }
+}
+
+function tryInstallPython() {
+  const platform = os.platform();
+  try {
+    if (platform === 'win32') {
+      /* Windows: tenta winget */
+      process.stdout.write('  Instalando Python via winget...');
+      const r = spawnSync('winget', ['install', '--id', 'Python.Python.3.12', '-e', '--silent'], {
+        stdio: ['ignore', 'pipe', 'pipe'], encoding: 'utf8', timeout: 120000,
+      });
+      if (r.status === 0) { console.log(` ${c.green}✓${c.reset}`); return true; }
+    } else if (platform === 'darwin') {
+      /* macOS: tenta brew */
+      process.stdout.write('  Instalando Python via brew...');
+      const r = spawnSync('brew', ['install', 'python3'], {
+        stdio: ['ignore', 'pipe', 'pipe'], encoding: 'utf8', timeout: 180000,
+      });
+      if (r.status === 0) { console.log(` ${c.green}✓${c.reset}`); return true; }
+    } else {
+      /* Linux: tenta apt */
+      process.stdout.write('  Instalando Python via apt...');
+      const r = spawnSync('apt-get', ['install', '-y', 'python3', 'python3-pip'], {
+        stdio: ['ignore', 'pipe', 'pipe'], encoding: 'utf8', timeout: 120000,
+      });
+      if (r.status === 0) { console.log(` ${c.green}✓${c.reset}`); return true; }
+    }
+  } catch {}
+  console.log(` ${c.yellow}falhou${c.reset}`);
+  return false;
+}
+
 /* ── detectar IDEs instaladas ── */
 function detectIDEs(projectRoot) {
   const found = [];
@@ -98,18 +198,7 @@ function installSkills(skillsDir, ideDir, ideName) {
   for (const skillName of fs.readdirSync(skillsDir)) {
     const skillFile = path.join(skillsDir, skillName, 'SKILL.md');
     if (!fs.existsSync(skillFile)) continue;
-
-    let dest;
-    if (ideName === 'claude-code') {
-      dest = path.join(ideDir, 'commands', `${skillName}.md`);
-    } else if (ideName === 'gemini') {
-      dest = path.join(ideDir, 'commands', `${skillName}.md`);
-    } else if (ideName === 'opencode') {
-      dest = path.join(ideDir, 'commands', `${skillName}.md`);
-    } else {
-      dest = path.join(ideDir, 'commands', `${skillName}.md`);
-    }
-
+    const dest = path.join(ideDir, 'commands', `${skillName}.md`);
     fs.mkdirSync(path.dirname(dest), { recursive: true });
     fs.copyFileSync(skillFile, dest);
     count++;
@@ -170,18 +259,20 @@ async function main() {
   console.log('');
   console.log(`${c.bold}${c.cyan}╔══════════════════════════════════════════╗${c.reset}`);
   console.log(`${c.bold}${c.cyan}║   VLI — Venda com Landing de Imóvel     ║${c.reset}`);
-  console.log(`${c.bold}${c.cyan}║   Instalador v0.1.0                      ║${c.reset}`);
+  console.log(`${c.bold}${c.cyan}║   Instalador v0.1.1                      ║${c.reset}`);
   console.log(`${c.bold}${c.cyan}╚══════════════════════════════════════════╝${c.reset}`);
   console.log('');
 
+  /* ── 0. verificar e instalar dependências ── */
+  installDependencies();
+
   /* ── destino da instalação ── */
-  const projectRoot = flags.here ? process.cwd()
-    : path.join(process.cwd());
+  const projectRoot = flags.here ? process.cwd() : process.cwd();
 
   /* ── nome do usuário ── */
   let userName = flags.name || '';
   if (!userName) {
-    userName = prompt('Seu nome (para personalizar as LPs): ') || 'Usuário';
+    userName = prompt('\nSeu nome (para personalizar as LPs): ') || 'Usuário';
   }
 
   /* ── detectar IDEs ── */
@@ -219,12 +310,11 @@ async function main() {
   /* ── 2. criar _lp-output/ ── */
   process.stdout.write(`  Criando pasta de output...`);
   fs.mkdirSync(path.join(projectRoot, '_lp-output'), { recursive: true });
-  /* .gitkeep para o git trackear a pasta vazia */
   const gitkeep = path.join(projectRoot, '_lp-output', '.gitkeep');
   if (!fs.existsSync(gitkeep)) fs.writeFileSync(gitkeep, '');
   console.log(` ${c.green}✓${c.reset}`);
 
-  /* ── 3. gerar config.yaml (sem versionar) ── */
+  /* ── 3. gerar config.yaml ── */
   process.stdout.write(`  Gerando configuração local...`);
   writeConfig(vliDest, userName);
   console.log(` ${c.green}✓${c.reset}`);
@@ -273,7 +363,7 @@ async function main() {
   console.log(`  ${bold('1.')} Abra este projeto no ${bold('Claude Code')} (ou sua IDE)`);
   console.log(`  ${bold('2.')} Digite ${bold(c.cyan + '/lp' + c.reset)} para criar sua primeira Landing Page`);
   console.log('');
-  console.log(gray(`  Ajuda: /lp-help   |   Docs: github.com/MarcelocardosoLeal/vli-lp-imovel`));
+  console.log(gray(`  Ajuda: /lp-help   |   Docs: npmjs.com/package/lp-imovel`));
   console.log('');
 }
 
