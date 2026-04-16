@@ -8,10 +8,32 @@
 Gera alt-text descritivo para cada imagem da LP. Combina **acessibilidade** (leitor de tela) + **SEO** (Google indexa).
 
 ## Inputs
-- Lista de imagens em `lp.json` (slot + caminho)
+- Lista de imagens em `lp.json` (slot + caminho + categoria definida no `lp-imagens-prep`)
 - Contexto da LP: nome, tipo, bairro, diferenciais
 
-## Regras
+## Fluxo — pedir descrição ao usuário para cada foto
+
+**Não gerar alt-text genérico sem input do usuário.** Para cada foto, mostrar o nome do arquivo e a categoria já definida, e pedir uma breve descrição:
+
+```
+Agora vou criar as descrições das fotos (para acessibilidade e SEO).
+Me ajude descrevendo o que aparece em cada uma:
+
+Foto 1: apto-vila-re-hero-01.webp (Fachada / Hero)
+O que é o destaque principal dessa foto?
+(Ex: "sala ampla com sofá azul e janela grande", "fachada do prédio à noite")
+→
+```
+
+Repetir para cada foto. Se o usuário não quiser descrever individualmente, oferecer:
+```
+  [1] Descrever cada foto individualmente (mais preciso para SEO)
+  [2] Gerar automaticamente com base na categoria e contexto do imóvel
+```
+
+Se escolher [2] → gerar com base na categoria + dados do imóvel, informando que ficará mais genérico.
+
+## Regras de geração
 1. **Nunca começar com** "Imagem de", "Foto de", "Picture of"
 2. **Concreto e específico**: "Sala ampla com pé-direito alto e janelas do chão ao teto" > "Sala bonita"
 3. **Inclui localização quando relevante**: "Vista da varanda do apto no Jardim Europa"
@@ -32,5 +54,16 @@ Gera alt-text descritivo para cada imagem da LP. Combina **acessibilidade** (lei
 }
 ```
 
+Após gerar todos os alt-texts, mostrar tabela para revisão:
+```
+Resumo dos alt-texts gerados:
+
+  Hero:     "Sala integrada com varanda gourmet..."
+  Galeria 1: "Cozinha planejada em U..."
+  Galeria 2: "Suíte master com closet..."
+
+Quer ajustar algum? [1] Sim  [2] Tudo ok
+```
+
 ## Tom
-Silencioso, gera tudo de uma vez, mostra resultado tabulado pro usuário aprovar/editar.
+Didático, explica por que alt-text importa em uma linha antes de começar. Depois, silencioso — gera e apresenta para aprovação.

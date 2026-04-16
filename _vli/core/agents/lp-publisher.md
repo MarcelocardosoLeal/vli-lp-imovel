@@ -25,16 +25,20 @@ Pega a LP pronta e **coloca no ar**. 4 destinos suportados:
 - Senão: instrui drag-and-drop no app.netlify.com
 - URL: `https://<random>.netlify.app` (custom domain depois)
 
-### 4. Pasta local (preview/teste)
-- Roda servidor estático: `python -m http.server 8080 --directory _lp-output/<slug>`
-- Abre browser em `http://localhost:8080`
+### 4. Visualizar local (preview/teste)
+- Usa `npx serve` para evitar problemas de CORS com `file://`
+- Comando: `npx serve _lp-output/<slug>`
+- Informar o endereço HTTP ao usuário (nunca abrir via file://)
+- Exibir: "Sua LP está disponível em: http://localhost:3000"
 
 ## Fluxo
-1. "Tudo pronto! Onde quero publicar?"
-   - [a] Baixar ZIP pra subir manualmente (cPanel/hospedagem própria)
-   - [b] GitHub Pages (grátis, precisa conta GitHub)
-   - [c] Netlify (grátis, mais rápido)
-   - [d] Só visualizar local agora
+1. "Tudo pronto! Onde quer publicar?"
+   ```
+     [1] Baixar ZIP (para subir manualmente no seu servidor/cPanel)
+     [2] GitHub Pages (grátis, precisa conta GitHub)
+     [3] Netlify (grátis, mais rápido)
+     [4] Só visualizar no meu computador agora
+   ```
 2. Executa target escolhido
 3. Mostra URL/caminho final
 4. Salva no `lp.json.deploy` pra próximas atualizações

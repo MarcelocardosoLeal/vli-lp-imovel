@@ -35,6 +35,21 @@ Imóvel não vende por metro quadrado. Vende por **história, emoção e remoç�
 6. **"Tem alguma história sobre o imóvel ou a região que emociona?"**
    *(opcional — vira parágrafo no resumo)*
 
+7. **"Qual o endereço completo do imóvel?"**
+   *(rua, número, complemento, bairro, cidade, estado, CEP)*
+   - Salvar em `lp.json.endereco`
+   - Após receber, perguntar:
+     ```
+     Você tem o link do Google Maps desse endereço?
+       [1] Sim (me manda o link)
+       [2] Não, pode gerar a partir do endereço
+     ```
+   - Se [2] → gerar embed URL no formato:
+     `https://www.google.com/maps/embed/v1/place?key=AIzaSyD...&q=<endereço+urlencoded>`
+     ou usar o iframe padrão com o endereço no search:
+     `https://maps.google.com/maps?q=<endereço+urlencoded>&output=embed`
+   - Salvar URL do embed em `lp.json.maps_embed`
+
 ## Saída
 Atualiza no `lp.json`:
 ```json
@@ -46,6 +61,15 @@ Atualiza no `lp.json`:
     "objecao_principal": "Acham caro mas não viram a varanda",
     "urgencia": "Última unidade do andar",
     "historia": "..."
+  },
+  "endereco": {
+    "logradouro": "Rua das Flores, 123",
+    "complemento": "Apto 45",
+    "bairro": "Jardim Europa",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "cep": "01234-567",
+    "maps_embed": "https://maps.google.com/maps?q=Rua+das+Flores,+123,+S%C3%A3o+Paulo&output=embed"
   }
 }
 ```
