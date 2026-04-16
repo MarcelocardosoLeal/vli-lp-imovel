@@ -1,17 +1,21 @@
 /* ============================================
    MAIN.JS — TEMPLATE BAIRRO
-   Interações: header scroll, FAQ, form, animações
+   Header scroll · Carousel · FAQ · Form · Animações
    ============================================ */
 
 (function () {
   'use strict';
 
   initMobileMenu();
+  initCarousel();
+  initFAQ();
+  initForm();
+  initScrollAnimations();
 
   /* === HEADER: fundo ao rolar === */
   const header = document.querySelector('.header');
   if (header) {
-    const onScroll = () => {
+    window.addEventListener('scroll', () => {
       if (window.scrollY > 80) {
         header.style.background = 'var(--color-primary-dark)';
         header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.25)';
@@ -19,193 +23,214 @@
         header.style.background = 'var(--color-primary)';
         header.style.boxShadow = 'none';
       }
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-  }
-
-  /* === FAQ: apenas um aberto por vez === */
-  const faqItems = document.querySelectorAll('.faq__item');
-  faqItems.forEach(item => {
-    item.addEventListener('toggle', () => {
-      if (item.open) {
-        faqItems.forEach(other => {
-          if (other !== item) other.removeAttribute('open');
-        });
-      }
-    });
-  });
-
-  /* === FORMULÁRIO === */
-  const leadForm = document.getElementById('lead-form');
-  if (leadForm) {
-    leadForm.addEventListener('submit', e => {
-      e.preventDefault();
-
-      const nome = leadForm.querySelector('[name="nome"]');
-      const tel = leadForm.querySelector('[name="telefone"]');
-
-      if (!nome || !nome.value.trim()) {
-        showToast('Preencha seu nome para continuar.', 'warn');
-        nome && nome.focus();
-        return;
-      }
-      if (!tel || !tel.value.trim()) {
-        showToast('Informe seu telefone ou WhatsApp.', 'warn');
-        tel && tel.focus();
-        return;
-      }
-
-      const btn = leadForm.querySelector('[type="submit"]');
-      if (btn) {
-        btn.disabled = true;
-        btn.textContent = 'Enviando...';
-      }
-
-      /* Simula envio — substitua pela integração real */
-      setTimeout(() => {
-        showToast('Visita agendada! Entraremos em contato em breve. 🌿', 'ok');
-        leadForm.reset();
-        if (btn) {
-          btn.disabled = false;
-          btn.textContent = 'Enviar';
-        }
-      }, 900);
-    });
-  }
-
-  /* === SMOOTH SCROLL === */
-  initSmoothAnchorScroll();
-
-  /* === TOAST === */
-  function showToast(msg, type) {
-    const existing = document.querySelector('.toast');
-    if (existing) existing.remove();
-
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.textContent = msg;
-    Object.assign(toast.style, {
-      position: 'fixed',
-      bottom: '5rem',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      background: type === 'warn' ? '#c0392b' : '#40916c',
-      color: '#fff',
-      padding: '0.75rem 1.5rem',
-      borderRadius: '8px',
-      fontFamily: 'var(--font-body)',
-      fontSize: '0.9rem',
-      fontWeight: '500',
-      boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
-      zIndex: '9999',
-      whiteSpace: 'nowrap',
-    });
-
-    document.body.appendChild(toast);
-    setTimeout(() => toast.remove(), 3500);
+    }, { passive: true });
   }
 
   /* === PARALLAX SUAVE no hero === */
   const heroBg = document.querySelector('.hero__bg img');
   if (heroBg && window.innerWidth > 768) {
     window.addEventListener('scroll', () => {
-      const y = window.scrollY * 0.3;
-      heroBg.style.transform = 'translateY(' + y + 'px)';
+      heroBg.style.transform = 'translateY(' + (window.scrollY * 0.25) + 'px)';
     }, { passive: true });
   }
 
-  /* === ANIMAÇÃO DE ENTRADA === */
-  if ('IntersectionObserver' in window) {
+  /* === SMOOTH SCROLL === */
+  initSmoothScroll();
+
+  /* ─────────────────────────────────────── */
+  /* CAROUSEL                                */
+  /* ─────────────────────────────────────── */
+  function initCarousel() {
+    const carousel = document.querySelector('.galeria__carousel');
+    if (!carousel) return;
+
+    const slides  = Array.from(carousel.querySelectorAll('.galeria__slide'));
+    const dots    = Array.from(carousel.querySelectorAll('.galeria__dot'));
+    const thumbs  = Array.from(document.querySelectorAll('.galeria__thumb'));
+    const counter = carousel.querySelector('.galeria__counter');
+    const prevBtn = carousel.querySelector('.galeria__prev');
+    const nextBtn = carousel.querySelector('.galeria__next');
+    const total   = slides.length;
+    if (!total) return;
+
+    let current = 0;
+    let autoTimer = null;
+
+    function goTo(index) {
+      slides[current].classList.remove('is-active');
+      dots[current]  && dots[current].classList.remove('is-active');
+      thumbs[current] && thumbs[current].classList.remove('is-active');
+
+      current = ((index % total) + total) % total;
+
+      slides[current].classList.add('is-active');
+      dots[current]  && dots[current].classList.add('is-active');
+      thumbs[current] && thumbs[current].classList.add('is-active');
+      if (counter) counter.textContent = (current + 1) + ' / ' + total;
+    }
+
+    function startAuto() {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(() => goTo(current + 1), 5000);
+    }
+
+    function stopAuto() { clearInterval(autoTimer); }
+
+    prevBtn && prevBtn.addEventListener('click', () => { goTo(current - 1); stopAuto(); startAuto(); });
+    nextBtn && nextBtn.addEventListener('click', () => { goTo(current + 1); stopAuto(); startAuto(); });
+    dots.forEach((dot, i)   => dot.addEventListener('click', ()   => { goTo(i); stopAuto(); startAuto(); }));
+    thumbs.forEach((th, i)  => th.addEventListener('click',  ()   => { goTo(i); stopAuto(); startAuto(); }));
+
+    /* Swipe touch */
+    let touchStartX = 0;
+    carousel.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    carousel.addEventListener('touchend',   e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 44) { goTo(current + (diff > 0 ? 1 : -1)); stopAuto(); startAuto(); }
+    });
+
+    /* Teclado (quando o carousel está em foco) */
+    carousel.setAttribute('tabindex', '0');
+    carousel.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft')  { goTo(current - 1); stopAuto(); startAuto(); }
+      if (e.key === 'ArrowRight') { goTo(current + 1); stopAuto(); startAuto(); }
+    });
+
+    goTo(0);
+    startAuto();
+  }
+
+  /* ─────────────────────────────────────── */
+  /* FAQ — um aberto por vez                 */
+  /* ─────────────────────────────────────── */
+  function initFAQ() {
+    const items = document.querySelectorAll('.faq__item');
+    items.forEach(item => {
+      item.addEventListener('toggle', () => {
+        if (item.open) {
+          items.forEach(other => { if (other !== item) other.removeAttribute('open'); });
+        }
+      });
+    });
+  }
+
+  /* ─────────────────────────────────────── */
+  /* FORMULÁRIO                              */
+  /* ─────────────────────────────────────── */
+  function initForm() {
+    const form = document.getElementById('lead-form');
+    if (!form) return;
+
+    /* Se o form tem action (FormSubmit), deixa submeter normalmente */
+    if (form.getAttribute('action') && !form.getAttribute('action').startsWith('#')) return;
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const nome = form.querySelector('[name="nome"]');
+      const tel  = form.querySelector('[name="telefone"]');
+      if (!nome?.value.trim()) { showToast('Preencha seu nome para continuar.', 'warn'); nome?.focus(); return; }
+      if (!tel?.value.trim())  { showToast('Informe seu telefone ou WhatsApp.', 'warn'); tel?.focus();  return; }
+
+      const btn = form.querySelector('[type="submit"]');
+      if (btn) { btn.disabled = true; btn.textContent = 'Enviando...'; }
+
+      setTimeout(() => {
+        showToast('Mensagem enviada! Entraremos em contato em breve.', 'ok');
+        form.reset();
+        if (btn) { btn.disabled = false; btn.textContent = 'Enviar'; }
+      }, 900);
+    });
+  }
+
+  /* ─────────────────────────────────────── */
+  /* ANIMAÇÕES DE ENTRADA                    */
+  /* ─────────────────────────────────────── */
+  function initScrollAnimations() {
+    if (!('IntersectionObserver' in window)) return;
     const obs = new IntersectionObserver(
-      entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.style.opacity = '1';
-            e.target.style.transform = 'translateY(0)';
-            obs.unobserve(e.target);
-          }
-        });
-      },
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+          obs.unobserve(e.target);
+        }
+      }),
       { threshold: 0.07 }
     );
-
-    document.querySelectorAll(
-      '.resumo__card, .diff-item, .bairro__card, .ficha__row, .faq__item'
-    ).forEach((el, i) => {
+    document.querySelectorAll('.resumo__card, .diff-item, .bairro__card, .ficha__item, .faq__item').forEach((el, i) => {
       el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = `opacity 0.45s ease ${i * 0.04}s, transform 0.45s ease ${i * 0.04}s`;
+      el.style.transform = 'translateY(18px)';
+      el.style.transition = `opacity 0.4s ease ${i * 0.035}s, transform 0.4s ease ${i * 0.035}s`;
       obs.observe(el);
     });
   }
 
-  function initMobileMenu() {
-    const toggle = document.querySelector('.header__menu-toggle');
-    const menu = document.querySelector('.header__mobile-menu');
-    if (!toggle || !menu) return;
-
-    const setOpen = (open) => {
-      toggle.classList.toggle('is-open', open);
-      menu.classList.toggle('is-open', open);
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      document.body.style.overflow = open ? 'hidden' : '';
-    };
-
-    toggle.addEventListener('click', () => setOpen(!menu.classList.contains('is-open')));
-    menu.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', () => setOpen(false));
+  /* ─────────────────────────────────────── */
+  /* TOAST                                   */
+  /* ─────────────────────────────────────── */
+  function showToast(msg, type) {
+    document.querySelector('.toast')?.remove();
+    const t = document.createElement('div');
+    t.className = 'toast';
+    t.textContent = msg;
+    Object.assign(t.style, {
+      position: 'fixed', bottom: '5rem', left: '50%', transform: 'translateX(-50%)',
+      background: type === 'warn' ? '#b91c1c' : '#40916c',
+      color: '#fff', padding: '0.75rem 1.5rem', borderRadius: '8px',
+      fontFamily: 'var(--font-body)', fontSize: '0.9rem', fontWeight: '500',
+      boxShadow: '0 4px 20px rgba(0,0,0,0.2)', zIndex: '9999', whiteSpace: 'nowrap',
     });
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') setOpen(false);
-    });
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 768) setOpen(false);
-    }, { passive: true });
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), 3500);
   }
 
-  function initSmoothAnchorScroll() {
-    const links = Array.from(document.querySelectorAll('a[href^="#"]'));
-    if (!links.length) return;
-
-    const easeInOutPlume = (t) => (
-      t < 0.5
-        ? 4 * t * t * t
-        : 1 - Math.pow(-2 * t + 2, 3) / 2
-    );
-
-    const animateScrollTo = (top) => {
-      if (window.innerWidth < 768) {
-        window.scrollTo(0, top);
-        return;
-      }
-
-      const startY = window.scrollY;
-      const distance = top - startY;
-      const duration = Math.min(1800, Math.max(900, Math.abs(distance) * 0.75));
-      const startTime = performance.now();
-
-      const step = (now) => {
-        const progress = Math.min((now - startTime) / duration, 1);
-        const eased = easeInOutPlume(progress);
-        window.scrollTo(0, startY + distance * eased);
-        if (progress < 1) window.requestAnimationFrame(step);
-      };
-
-      window.requestAnimationFrame(step);
+  /* ─────────────────────────────────────── */
+  /* MENU MOBILE                             */
+  /* ─────────────────────────────────────── */
+  function initMobileMenu() {
+    const toggle = document.querySelector('.header__menu-toggle');
+    const menu   = document.querySelector('.header__mobile-menu');
+    if (!toggle || !menu) return;
+    const setOpen = open => {
+      toggle.classList.toggle('is-open', open);
+      menu.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
     };
+    toggle.addEventListener('click', () => setOpen(!menu.classList.contains('is-open')));
+    menu.querySelectorAll('a[href^="#"]').forEach(l => l.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
+    window.addEventListener('resize', () => { if (window.innerWidth > 768) setOpen(false); }, { passive: true });
+  }
 
-    links.forEach(link => {
+  /* ─────────────────────────────────────── */
+  /* SMOOTH SCROLL                           */
+  /* ─────────────────────────────────────── */
+  function initSmoothScroll() {
+    const ease = t => t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
       link.addEventListener('click', e => {
         const hash = link.getAttribute('href');
         if (!hash || hash === '#') return;
         const target = document.querySelector(hash);
         if (!target) return;
         e.preventDefault();
-        const headerH = header ? header.offsetHeight : 0;
-        const top = Math.max(0, target.getBoundingClientRect().top + window.scrollY - headerH - 12);
-        animateScrollTo(top);
-        window.history.replaceState(null, '', hash);
+        const hh   = header ? header.offsetHeight : 0;
+        const top  = Math.max(0, target.getBoundingClientRect().top + window.scrollY - hh - 12);
+        const from = window.scrollY;
+        const dist = top - from;
+        const dur  = Math.min(1600, Math.max(700, Math.abs(dist) * 0.7));
+        const t0   = performance.now();
+        const step = now => {
+          const p = Math.min((now - t0) / dur, 1);
+          window.scrollTo(0, from + dist * ease(p));
+          if (p < 1) requestAnimationFrame(step);
+        };
+        if (window.innerWidth > 768) requestAnimationFrame(step);
+        else window.scrollTo(0, top);
+        history.replaceState(null, '', hash);
       });
     });
   }
+
 })();

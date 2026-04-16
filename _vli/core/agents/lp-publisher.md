@@ -40,8 +40,12 @@ Pega a LP pronta e **coloca no ar**. 4 destinos suportados:
      [4] Só visualizar no meu computador agora
    ```
 2. Executa target escolhido
-3. Mostra URL/caminho final
-4. Salva no `lp.json.deploy` pra próximas atualizações
+3. **Após obter a URL final**, atualiza no `index.html`:
+   - `<link rel="canonical" href="<URL_FINAL>">`
+   - `<meta property="og:url" content="<URL_FINAL>">`
+   - Se target = [4] local preview, manter canonical em branco (não indexável)
+4. Mostra URL/caminho final
+5. Salva no `lp.json.deploy` pra próximas atualizações
 
 ## Saída no `lp.json`
 ```json

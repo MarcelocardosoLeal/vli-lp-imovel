@@ -29,10 +29,23 @@
 - ❌ Imagem quebrada → bloqueia
 
 ### C. SEO/Meta
-- ✅ `<title>` preenchido
-- ✅ `meta description` 130-160 chars
-- ✅ JSON-LD valida (parse JSON)
-- ✅ Canonical URL presente
+- ✅ `<title>` termina com nome do imóvel (não nome da empresa)
+- ✅ `meta description` entre 130-160 chars (contar exato)
+- ✅ `meta keywords` presente
+- ✅ `<link rel="canonical">` presente (pode estar vazio se ainda não publicado)
+- ✅ `og:title`, `og:description`, `og:image`, `og:url`, `og:type`, `og:locale` todos presentes
+- ✅ `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image` todos presentes
+- ✅ JSON-LD valida (parse JSON sem erro)
+- ✅ FAQPage schema tem mesma quantidade e mesmo texto das perguntas do FAQ visível no HTML
+- ✅ Organization schema tem email (se lp.json tiver email)
+- ✅ Product schema tem `additionalProperty` com dados técnicos do imóvel
+- ✅ H1 contém tipo de imóvel + localização (não só nome)
+- ✅ CTA presente em pelo menos 4 posições: hero, após diferenciais, após ficha, final
+- ✅ Rodapé tem: empresa, telefone, email (se disponível), link política de privacidade
+- ❌ title termina com empresa → bloqueia (SEO incorreto)
+- ❌ description fora de 130-160 chars → bloqueia
+- ❌ FAQPage schema diverge do FAQ visível → bloqueia
+- ❌ Canonical tag ausente → bloqueia
 
 ### D. Visual/Mobile
 - ✅ Contraste WCAG AA (texto sobre fundo)

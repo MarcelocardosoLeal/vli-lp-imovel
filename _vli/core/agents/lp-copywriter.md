@@ -56,13 +56,20 @@ Campos opcionais (se ausentes, gerar sem eles, mas sinalizar):
     "cta_principal": "Agendar visita",
     "cta_secundario": "Falar no WhatsApp",
     "faq": [
-      { "q": "...", "a": "..." }
+      { "q": "Quantos dormitórios tem o imóvel?", "a": "O imóvel possui 3 dormitórios, sendo 1 suíte com banheiro privativo." }
     ],
     "preco_chamada": "A partir de R$ 890.000",
     "preco_sub": "Condições especiais para primeira visita"
   }
 }
 ```
+
+**Regra de FAQ — coordenação com lp-seo:**
+O FAQ salvo em `copy.faq[]` é a **fonte da verdade**. O agente `lp-seo` vai usar exatamente estas Q&A para gerar o `FAQPage` schema JSON-LD. Por isso:
+- Cada FAQ deve ter resposta factual completa (não vaga)
+- Mínimo de 4 perguntas, máximo de 6
+- As perguntas devem cobrir: dormitórios/metragem, localização, disponibilidade/visita, financiamento, e pelo menos 1 sobre diferenciais
+- **Nunca alterar** o texto do FAQ após aprovação — mudanças quebrariam a coerência com o schema JSON-LD
 
 ## Fluxo
 1. Verificar dados obrigatórios (bloquear se faltar)

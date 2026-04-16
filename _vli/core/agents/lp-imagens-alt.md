@@ -33,13 +33,17 @@ Repetir para cada foto. Se o usuário não quiser descrever individualmente, ofe
 
 Se escolher [2] → gerar com base na categoria + dados do imóvel, informando que ficará mais genérico.
 
-## Regras de geração
+## Regras de geração (spec 10.4)
 1. **Nunca começar com** "Imagem de", "Foto de", "Picture of"
 2. **Concreto e específico**: "Sala ampla com pé-direito alto e janelas do chão ao teto" > "Sala bonita"
-3. **Inclui localização quando relevante**: "Vista da varanda do apto no Jardim Europa"
+3. **Inclui nome do imóvel + localização** — modelos obrigatórios da spec:
+   - Hero: `Fachada da [nome_imovel] em [bairro], [cidade]`
+   - Galeria grande: `[cômodo] da [nome_imovel] no [bairro]` → ex: `Cozinha planejada da Casa Cambuí no Cambuí, Campinas`
+   - Miniatura (thumb): mesmo padrão da galeria grande, não apenas o nome do cômodo
+   - ❌ Errado para thumb: "Fachada", "Sala", "Cozinha" — muito curto, sem contexto
+   - ✅ Correto para thumb: "Fachada da Casa Cambuí em Campinas", "Sala de estar da Casa Cambuí"
 4. **Máximo 125 caracteres** por alt
-5. **Hero**: alt = headline da LP em forma descritiva
-6. **Plantas**: alt = "Planta 2 dormitórios, 65m², com varanda integrada"
+5. **Plantas**: alt = "Planta [N] dormitórios, [M]m², [nome_imovel]"
 
 ## Saída no `lp.json`
 ```json

@@ -10,19 +10,25 @@
   <!-- SEO: Meta Description -->
   <meta name="description" content="Apartamento de alto padrão com 3 suítes, 187m² no Jardim Europa, São Paulo. Lazer completo, 3 vagas, varanda gourmet. Conheça o Edifício Aurora.">
 
+  <!-- SEO: Keywords -->
+  <meta name="keywords" content="apartamento à venda Jardim Europa São Paulo, imóvel Jardim Europa, apartamento Jardim Europa">
+
+  <!-- SEO: Canonical -->
+  <link rel="canonical" href="">
+
   <!-- SEO: Open Graph -->
-  <meta property="og:title" content="Edifício Aurora — Apartamento no Jardim Europa, São Paulo">
-  <meta property="og:description" content="Apartamento de alto padrão com 3 suítes, 187m² no Jardim Europa. Lazer completo e localização privilegiada.">
-  <meta property="og:image" content="https://placehold.co/1200x630/0c2340/c5a55a?text=Edificio+Aurora">
-  <meta property="og:type" content="website">
+  <meta property="og:title" content="Apartamento à venda no Jardim Europa, São Paulo | Edifício Aurora">
+  <meta property="og:description" content="Apartamento de alto padrão com 3 suítes, 187m² no Jardim Europa, São Paulo. Lazer completo, 3 vagas, varanda gourmet. Conheça o Edifício Aurora.">
+  <meta property="og:image" content="img/hero.webp">
   <meta property="og:url" content="">
+  <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
 
   <!-- SEO: Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Edifício Aurora — Jardim Europa, São Paulo">
-  <meta name="twitter:description" content="Apartamento de alto padrão com 3 suítes e 187m².">
-  <meta name="twitter:image" content="img/hero.jpg">
+  <meta name="twitter:title" content="Apartamento à venda no Jardim Europa, São Paulo | Edifício Aurora">
+  <meta name="twitter:description" content="Apartamento de alto padrão com 3 suítes, 187m² no Jardim Europa, São Paulo. Lazer completo, 3 vagas, varanda gourmet. Conheça o Edifício Aurora.">
+  <meta name="twitter:image" content="img/hero.webp">
 
   <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -117,7 +123,7 @@
     "@type": "Product",
     "name": "Edifício Aurora — Apartamento de Alto Padrão no Jardim Europa",
     "description": "Apartamento com 3 suítes, 187m², 3 vagas, lazer completo no Jardim Europa, São Paulo.",
-    "image": "img/hero.jpg",
+    "image": "img/hero.webp",
     "brand": {
       "@type": "Organization",
       "name": "Nova Realty Imóveis"
@@ -125,9 +131,17 @@
     "offers": {
       "@type": "Offer",
       "priceCurrency": "BRL",
-      "price": "2850000",
-      "availability": "https://schema.org/PreOrder"
-    }
+      "price": "0",
+      "availability": "https://schema.org/InStock"
+    },
+    "additionalProperty": [
+      {"@type":"PropertyValue","name":"Dormitórios","value":"3"},
+      {"@type":"PropertyValue","name":"Suítes","value":"3"},
+      {"@type":"PropertyValue","name":"Banheiros","value":"4"},
+      {"@type":"PropertyValue","name":"Vagas","value":"3"},
+      {"@type":"PropertyValue","name":"Área","value":"187m²"},
+      {"@type":"PropertyValue","name":"Endereço","value":"Rua Europa, 500 — Jardim Europa, São Paulo"}
+    ]
   }
   </script>
 </head>
@@ -183,7 +197,8 @@
       <div class="hero__content">
         <span class="hero__badge" data-bind="status">Lançamento</span>
 
-        <h1 class="hero__title" data-bind="nome">Edifício Aurora</h1>
+        <h1 class="hero__title"><span data-bind="tipo">Apartamento</span> à venda no <span data-bind="bairro">Jardim Europa</span></h1>
+        <p class="hero__tagline" data-bind="nome">Edifício Aurora</p>
 
         <p class="hero__location">
           <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
@@ -367,6 +382,9 @@
             <span class="feature-card__text">Varanda gourmet</span>
           </div>
         </div>
+        <div style="text-align:center;margin-top:2.5rem">
+          <a href="#contato" class="btn btn--primary btn--lg">Tenho Interesse</a>
+        </div>
       </div>
     </section>
 
@@ -437,6 +455,9 @@
             <span class="specs__label">Construtora</span>
             <span class="specs__value" data-bind="construtora">Aurora Engenharia</span>
           </div>
+        </div>
+        <div style="text-align:center;margin-top:2.5rem">
+          <a href="#contato" class="btn btn--primary btn--lg">Solicitar informações</a>
         </div>
       </div>
     </section>
@@ -640,11 +661,11 @@
         </span>
         <span class="footer__info-item">
           <svg class="footer__info-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          contato@novarealty.com.br
+          <a data-bind="email" href="mailto:contato@novarealty.com.br">contato@novarealty.com.br</a>
         </span>
       </div>
       <div class="footer__bottom">
-        <p>&copy; 2026 Nova Realty Imóveis. Todos os direitos reservados.</p>
+        <p>&copy; 2026 Nova Realty Imóveis. Todos os direitos reservados. <a href="/politica-de-privacidade" style="font-size:0.78rem;opacity:0.65">Política de Privacidade</a></p>
       </div>
     </div>
   </footer>

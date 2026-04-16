@@ -1,13 +1,13 @@
 ---
 name: lp
-description: 'Comando único do método VLI. Cria uma Landing Page de imóvel do briefing até a publicação, guiando o usuário leigo por 13 etapas com 15 agentes especialistas. Use quando o usuário pedir para criar uma landing page de imóvel ou digitar /lp.'
+description: 'Comando único do método VLI. Cria uma Landing Page de imóvel do briefing até a publicação, guiando o usuário leigo por 15 etapas com 15 agentes especialistas. Use quando o usuário pedir para criar uma landing page de imóvel ou digitar /lp.'
 ---
 
 # /lp — Criar Landing Page de Imóvel (Método VLI)
 
 ## O que faz
 Conduz o usuário do zero até uma LP publicada, sem exigir conhecimento técnico.
-1 comando, 13 etapas, 15 agentes especialistas, ~30 minutos na primeira vez.
+1 comando, 15 etapas, 15 agentes especialistas, ~30 minutos na primeira vez.
 
 ## Como usar
 O usuário digita `/lp` e o sistema faz o resto.
@@ -16,7 +16,7 @@ O usuário digita `/lp` e o sistema faz o resto.
 
 ### Passo 0 — Detectar sessão existente
 Leia `_lp-output/` procurando `.sessao.json` com `completed: false`.
-- Se encontrar: "Encontrei a LP **[nome]** em andamento (etapa [X] de 13). Quer continuar de onde parou ou começar uma nova?"
+- Se encontrar: "Encontrei a LP **[nome]** em andamento (etapa [X] de 15). Quer continuar de onde parou ou começar uma nova?"
   - `continuar` → retoma a partir da etapa salva, recarrega `lp.json` + `briefing.md`
   - `nova` → confirma descarte e segue pro Passo 1
   - `ver progresso` → mostra resumo das etapas concluídas antes de decidir
@@ -30,71 +30,82 @@ Leia `_lp-output/` procurando `.sessao.json` com `completed: false`.
 - Se faltar algo: explica e resolve em linguagem leiga
 - **Diga ao usuário:** "Preparando o ambiente..." (só se for a primeira vez)
 
-### Passo 2 — Briefing comercial
+### Passo 2 — Coleta de dados do imóvel + slug
+**Agente:** `lp-orquestrador` (inline)
+- Pergunta se o usuário tem os dados organizados ([1] sim / [2] parcialmente / [3] não)
+- [1] → mostra ficha para preencher de uma vez; [2][3] → vai perguntando um a um
+- Define o slug (nome da pasta): sugere automaticamente, permite trocar
+- Cria `_lp-output/<slug>/` + inicializa `.sessao.json` com todas etapas em `pending`
+- **Diga ao usuário:** "Antes de tudo, preciso dos dados do imóvel..."
+
+### Passo 3 — Briefing comercial
 **Agente:** `lp-corretor`
-- Faz perguntas de corretor (público, diferencial, objeção, urgência)
+- Faz perguntas de corretor (público, diferencial, objeção, urgência, endereço, Maps)
 - 1 pergunta por vez, conversa natural
 - **Salva em:** `_lp-output/<slug>/briefing.md` + `lp.json.briefing`
 - **Diga ao usuário:** "Agora vou fazer umas perguntas como se eu fosse o corretor..."
 
-### Passo 3 — Escolher template
+### Passo 4 — Escolher template
 **Agente:** `lp-arquiteto`
 - Recomenda template com base no briefing
+- Copia o template escolhido para `_lp-output/<slug>/`, substitui todos `data-bind`/`data-stat` com valores reais
 - Pergunta quais seções ativar/desativar
 - **Diga ao usuário:** "Pelo que entendi do imóvel, sugiro o template **[nome]**..."
 
-### Passo 4 — Escolher paleta
+### Passo 5 — Escolher paleta
 **Agente:** `lp-paleta`
 - Sugere 3 paletas com base no posicionamento
 - **Diga ao usuário:** "Agora vamos escolher as cores..."
 
-### Passo 5 — Criar textos
+### Passo 6 — Criar textos
 **Agente:** `lp-copywriter`
 - Gera headline, sub, descrições, FAQ, CTAs
 - Mostra em formato legível, espera aprovação
 - **Diga ao usuário:** "Criei os textos da sua LP. Veja se gosta..."
 
-### Passo 6 — Preparar imagens
+### Passo 7 — Preparar imagens
 **Agente:** `lp-imagens-prep`
 - Pede pasta com fotos brutas
 - Renomeia, corta, converte WebP
 - Se faltar Pillow: chama `lp-bootstrap` automaticamente
 - **Diga ao usuário:** "Me manda o caminho da pasta com as fotos do imóvel..."
 
-### Passo 7 — Alt-text das imagens
+### Passo 8 — Alt-text das imagens
 **Agente:** `lp-imagens-alt`
 - Gera alt-text descritivo pra cada imagem
 - **Diga ao usuário:** (silencioso, mostra resultado tabulado)
 
-### Passo 8 — SEO
+### Passo 9 — SEO
 **Agente:** `lp-seo`
-- Meta tags, JSON-LD, keywords locais
+- Meta tags, JSON-LD, keywords locais, canonical (deixa em branco até o deploy)
+- Injeta diretamente no HTML final (os data-bind já foram substituídos no Passo 4)
 - **Diga ao usuário:** "Configurando pra sua LP aparecer no Google..."
 
-### Passo 9 — Captura de leads
+### Passo 10 — Captura de leads
 **Agente:** `lp-leads`
 - WhatsApp, email, webhook, CRM
 - **Diga ao usuário:** "Como quer receber os contatos dos interessados?"
 
-### Passo 10 — Analytics (opcional)
+### Passo 11 — Analytics (opcional)
 **Agente:** `lp-analytics`
 - GA4, Pixel, GTM
 - **Diga ao usuário:** "Quer medir quantas pessoas visitam? (pode pular)"
 
-### Passo 11 — Revisão técnica
+### Passo 12 — Revisão técnica
 **Agente:** `lp-revisor`
-- Checa data-bind, SEO, links, acessibilidade
+- Checa data-bind residuais, SEO, links, acessibilidade
 - Se encontrar bloqueios: volta pro agente responsável
 - **Diga ao usuário:** "Fazendo revisão final..."
 
-### Passo 12 — Performance
+### Passo 13 — Performance
 **Agente:** `lp-performance`
 - Otimiza lazy-load, preload, fonts, CSS
 - **Diga ao usuário:** "Otimizando velocidade..."
 
-### Passo 13 — Publicar
+### Passo 14 — Publicar
 **Agente:** `lp-publisher`
 - ZIP, GitHub Pages, Netlify ou preview local
+- Após deploy: atualiza `canonical` e `og:url` no HTML com a URL real
 - **Diga ao usuário:** "Tudo pronto! Onde quer publicar?"
 
 ## Regras gerais

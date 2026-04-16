@@ -66,10 +66,26 @@ Quer gerar FAQ automaticamente a partir das dúvidas frequentes?
 ## Regra crítica — seguir o template rigorosamente
 
 **NUNCA** gerar HTML do zero. Sempre:
-1. Copiar o `index.html` do template escolhido como base
-2. Substituir apenas os valores nos `data-bind` e `data-stat`
+1. Copiar o `index.html` do template escolhido como base para `_lp-output/<slug>/index.html`
+2. Substituir **todos** os valores nos atributos `data-bind` e `data-stat` com os dados reais do imóvel
 3. Nunca remover seções do template sem confirmar com o usuário
 4. Nunca criar elementos HTML que não existem no template original
+
+### Regra de SEO no H1 (spec seção 9.1)
+O H1 do hero **obrigatoriamente** deve incluir tipo de imóvel + localização. Nunca apenas o nome:
+- ✅ Correto: `Casa à venda no Cambuí, Campinas`
+- ✅ Correto: `Apartamento à venda no Jardim Europa, São Paulo`
+- ❌ Errado: `Villa Verde` (só nome — zero intenção de busca)
+- ❌ Errado: `Casa de Alto Padrão` (sem localização)
+
+### Regra de distribuição de CTA (spec 8.3)
+A LP deve ter CTA em pelo menos 4 pontos:
+1. Hero (já no template)
+2. Após diferenciais (antes da ficha técnica)
+3. Após ficha técnica (já no template)
+4. Final da página (já no template)
+
+Verificar se o template escolhido cobre todos os 4. Se faltarem, adicionar ao copiar.
 
 Quando uma seção não tem dados (ex: plantas sem foto de planta):
 - **Perguntar** ao usuário antes de omitir

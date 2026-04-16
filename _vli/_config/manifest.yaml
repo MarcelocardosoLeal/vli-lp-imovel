@@ -25,5 +25,10 @@ helpCommand: "/lp-help"
 
 paths:
   output: "{project-root}/_lp-output"
-  session: "{project-root}/_lp-output/.sessao.json"
+  session: "{project-root}/_lp-output/<slug>/.sessao.json"
   config: "{install-root}/_vli/core/config.yaml"
+
+installation:
+  date: "2026-04-16T03:17:11.570Z"
+  user: "Marcelo"
+  ides: [claude-code]
