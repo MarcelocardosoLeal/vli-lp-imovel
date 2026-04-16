@@ -10,13 +10,13 @@
 ## Instalação
 
 ```bash
-npx lp-imovel install
+npx github:MarcelocardosoLeal/vli-lp-imovel install
 ```
 
 Ou com flags (sem perguntas interativas):
 
 ```bash
-npx lp-imovel install --here --name="Seu Nome" --ides=all
+npx github:MarcelocardosoLeal/vli-lp-imovel install --here --name="Seu Nome" --ides=all
 ```
 
 O instalador:
@@ -37,23 +37,25 @@ Dentro do seu projeto, na sua IDE:
 /lp
 ```
 
-O sistema conduz **13 etapas**:
+O sistema conduz **15 etapas**:
 
 | # | Etapa | O que acontece |
 |---|---|---|
+| 0 | Retomar sessão | Detecta LP em andamento e pergunta se quer continuar |
 | 1 | Ambiente | Verifica Python/Pillow (silencioso se ok) |
-| 2 | Briefing | Perguntas de corretor: público, diferencial, urgência |
-| 3 | Template | Escolhe entre 4 modelos visuais |
-| 4 | Paleta | Escolhe cores conforme posicionamento |
-| 5 | Textos | Gera headline, descrições, FAQ, CTAs |
-| 6 | Imagens | Renomeia, corta e converte fotos pra WebP |
-| 7 | Alt-text | Descreve cada imagem (SEO + acessibilidade) |
-| 8 | SEO | Meta tags, JSON-LD, keywords locais |
-| 9 | Leads | Configura WhatsApp, email, webhook |
-| 10 | Analytics | GA4, Meta Pixel (opcional) |
-| 11 | Revisão | Checa conteúdo, links, contraste, mobile |
-| 12 | Performance | Otimiza velocidade (lazy-load, preload, cache) |
-| 13 | Publicar | ZIP, GitHub Pages, Netlify ou preview local |
+| 2 | Dados do imóvel | Coleta dados básicos e define o slug da pasta |
+| 3 | Briefing | Perguntas de corretor: público, diferencial, urgência |
+| 4 | Template | Escolhe entre 4 modelos visuais |
+| 5 | Paleta | Escolhe cores conforme posicionamento |
+| 6 | Textos | Gera headline, descrições, FAQ, CTAs |
+| 7 | Imagens | Renomeia, corta e converte fotos pra WebP |
+| 8 | Alt-text | Descreve cada imagem (SEO + acessibilidade) |
+| 9 | SEO | Meta tags, JSON-LD, keywords locais |
+| 10 | Leads | Configura WhatsApp, email, webhook |
+| 11 | Analytics | GA4, Meta Pixel (opcional) |
+| 12 | Revisão | Checa conteúdo, links, contraste, mobile |
+| 13 | Performance | Otimiza velocidade (lazy-load, preload, cache) |
+| 14 | Publicar | ZIP, GitHub Pages, Netlify ou preview local |
 
 ### Outros comandos
 
@@ -114,18 +116,18 @@ O sistema conduz **13 etapas**:
 ## Arquitetura
 
 ```
-_vli/
-├── _config/              ← manifests (agentes, skills, templates, paletas)
-├── core/
-│   ├── agents/           ← 15 agentes especialistas (.md)
-│   ├── skills/           ← 6 skills invocáveis
-│   ├── templates/        ← 4 templates HTML + _shared/
-│   ├── painel-app/       ← painel visual (GUI alternativa ao terminal)
-│   ├── scripts/          ← optimize-images.py
-│   ├── lib/              ← validator, session, slug, bridge
-│   └── resources/        ← spec canônica, briefing, palettes.json
 ├── bin/
-│   └── install.js        ← entry point do npx
+│   └── install.js        ← entry point do npx github:...
+├── _vli/
+│   ├── _config/          ← manifests (agentes, skills, templates, paletas)
+│   └── core/
+│       ├── agents/       ← 15 agentes especialistas (.md)
+│       ├── skills/       ← 6 skills invocáveis
+│       ├── templates/    ← 4 templates HTML + _shared/
+│       ├── scripts/      ← optimize-images.py
+│       ├── lib/          ← validator, session, slug, bridge
+│       └── resources/    ← spec canônica, briefing, palettes.json
+├── _lp-output/           ← LPs geradas (ignorado pelo git)
 └── package.json
 ```
 
@@ -179,7 +181,7 @@ _lp-output/
 
 ## Publicar no GitHub Pages (opcional)
 
-Para usar a opção de publicação via GitHub Pages no passo 13, você precisa do `gh` CLI autenticado:
+Para usar a opção de publicação via GitHub Pages no passo 14, você precisa do `gh` CLI autenticado:
 
 ```bash
 # 1. Instalar o gh CLI
