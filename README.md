@@ -117,7 +117,7 @@ O sistema conduz **15 etapas**:
 
 ```
 ├── bin/
-│   └── install.js        ← entry point do npx github:...
+│   └── install.js        ← entry point do npx lp-imovel install
 ├── _vli/
 │   ├── _config/          ← manifests (agentes, skills, templates, paletas)
 │   └── core/
